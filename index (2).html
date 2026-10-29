@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Leerlijnen ICT – OP STAP</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+ --navy:#06038D; --green:#95D600; --grey:#D9D9D9; --white:#FFFFFF;
+ --bg:#FFFFFF; --surface:#FFFFFF; --soft:#F4F4FA; --text:#14123F; --muted:#55537A;
+ --line:#D9D9D9; --head-bg:#06038D; --head-text:#FFFFFF; --chip-bg:#EDEDF8; --chip-text:#06038D;
+ --on:#F3FBE0; --on-line:#95D600; --nav-bg:#FFFFFF;
+ color-scheme: light;
+ box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+ --bg:#0B0A2E; --surface:#12104A; --soft:#151360; --text:#F2F2FA; --muted:#B5B4D6; --line:#2C2A70;
+ --head-bg:#06038D; --chip-bg:#24228A; --chip-text:#FFFFFF; --on:#1F2B10; --nav-bg:#0B0A2E; color-scheme:dark; } }
+:root[data-theme="dark"]{
+ --bg:#0B0A2E; --surface:#12104A; --soft:#151360; --text:#F2F2FA; --muted:#B5B4D6; --line:#2C2A70;
+ --head-bg:#06038D; --chip-bg:#24228A; --chip-text:#FFFFFF; --on:#1F2B10; --nav-bg:#0B0A2E; color-scheme:dark; }
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px); scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;font-weight:400;font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--nav-bg)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+
+/* hero */
+.hero{background:var(--navy);color:#fff;padding:72px 0 64px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);letter-spacing:-.02em;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero .lede{font-weight:500;font-size:1.125rem;max-width:58ch;margin:20px 0 0;color:#E6E6F7}
+.hero .facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;padding:0;list-style:none}
+.hero .facts li{border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 16px;font-weight:500;font-size:.9rem}
+.hero .facts b{color:var(--green);font-weight:700}
+.hero .route{position:absolute;right:-40px;bottom:-30px;width:min(46vw,460px);opacity:.9;pointer-events:none}
+
+/* nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nav-bg);border-bottom:1px solid var(--line)}
+nav.top ul{display:flex;gap:4px;list-style:none;margin:0 auto;padding:0 24px;max-width:1120px;overflow-x:auto}
+nav.top a{display:block;padding:18px 14px 15px;text-decoration:none;font-weight:600;font-size:.92rem;white-space:nowrap;color:var(--text);border-bottom:3px solid transparent}
+nav.top a:hover{color:var(--navy)}
+nav.top a.active{border-bottom-color:var(--green)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) nav.top a:hover{color:var(--green)} }
+
+section{padding:64px 0}
+.intro h2,.check h2{font-size:clamp(1.8rem,3.4vw,2.4rem);color:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .intro h2, :root:not([data-theme="light"]) .check h2, :root:not([data-theme="light"]) h3{color:#fff} }
+.lead{font-weight:500;font-size:1.1rem;max-width:68ch;margin:16px 0 32px}
+h3{font-size:1.35rem;font-weight:700;color:var(--navy);margin:48px 0 8px}
+h3 + .note{margin-top:0}
+.note{color:var(--muted);max-width:70ch;margin:8px 0 20px}
+
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;text-decoration:none;display:block;box-shadow:0 2px 0 var(--grey)}
+.card:hover{border-color:var(--green)}
+.card .n{font-weight:600;font-size:.85rem;color:var(--muted)}
+.card h4{margin:4px 0 8px;font-size:1.15rem;font-weight:700}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}
+.card .cnt{display:inline-block;margin-top:14px;font-weight:700;color:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .card .cnt{color:var(--green)} }
+
+/* levels */
+.levels{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:16px}
+.levels > div{padding:18px;border-right:1px solid var(--line);background:var(--surface)}
+.levels > div:last-child{border-right:0}
+.levels b{display:block;font-weight:700;margin-bottom:4px}
+.levels span{display:block;font-size:.88rem;color:var(--muted)}
+.levels .when{margin-top:10px;font-weight:600;color:var(--text)}
+.levels .bar{height:6px;border-radius:3px;background:var(--grey);margin-bottom:14px;overflow:hidden}
+.levels .bar i{display:block;height:100%;background:var(--green)}
+@media (max-width:760px){.levels{grid-template-columns:1fr 1fr}.levels > div:nth-child(2){border-right:0}.levels > div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* leerlijn header */
+.ll-head{background:var(--head-bg);color:var(--head-text);padding:56px 0 48px}
+.ll-num{font-weight:600;color:var(--green);font-size:1rem}
+.ll-head h2{font-size:clamp(2rem,4.6vw,3.2rem);margin:6px 0 12px;letter-spacing:-.01em}
+.ll-head p{max-width:66ch;margin:0;font-weight:400;color:#E6E6F7}
+.ll-count{display:inline-block;margin-top:22px;background:var(--green);color:var(--navy);border-radius:999px;padding:6px 16px;font-weight:600;font-size:.9rem}
+.ll-count b{font-weight:800}
+
+/* tables */
+.scroll{overflow-x:auto;margin:16px 0}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:.92rem}
+caption{text-align:left;font-weight:600;color:var(--muted);padding-bottom:10px;font-size:.88rem}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+thead th{background:var(--navy);color:#fff;font-weight:600;font-size:.85rem}
+thead th:first-child{border-top-left-radius:10px} thead th:last-child{border-top-right-radius:10px}
+tbody th{font-weight:600;white-space:nowrap;background:var(--surface)}
+.matrix td{min-width:120px;background:var(--surface)}
+.matrix td.on{background:var(--on);box-shadow:inset 3px 0 0 var(--on-line)}
+.plain td{background:var(--surface)}
+.code{display:inline-block;font-weight:600;font-size:.78rem;background:var(--chip-bg);color:var(--chip-text);border-radius:6px;padding:2px 8px;margin:2px 4px 2px 0;white-space:nowrap}
+
+/* path */
+.path{list-style:none;margin:20px 0 0;padding:0;position:relative}
+.step{display:grid;grid-template-columns:150px 1fr;gap:28px;position:relative;padding-bottom:22px}
+.step::before{content:"";position:absolute;left:162px;top:10px;bottom:-10px;width:3px;background:var(--grey)}
+.step:last-child::before{display:none}
+.step::after{content:"";position:absolute;left:156px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--green);border:3px solid var(--bg)}
+.grade{font-weight:700;color:var(--navy);text-align:right;padding-top:0;line-height:1.5}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .grade{color:#fff} }
+.body{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-left:8px}
+.what{margin:0 0 10px;font-weight:500}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-bottom:10px}
+.lvl{font-size:.78rem;font-weight:600;padding:2px 10px;border-radius:999px;border:1.5px solid var(--navy);color:var(--navy)}
+.lvl-gevorderd{background:var(--navy);color:#fff}
+.lvl-beginnend{background:transparent}
+.lvl-verkennend{border-style:dashed}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .lvl{border-color:#fff;color:#fff} :root:not([data-theme="light"]) .lvl-gevorderd{background:#fff;color:var(--navy)} }
+.md{font-size:.78rem;font-weight:500;color:var(--muted)}
+.klas{margin:0;font-size:.9rem;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.klas span{display:block;font-weight:600;color:var(--text);font-size:.8rem;margin-bottom:2px}
+@media (max-width:680px){
+ .step{grid-template-columns:1fr;gap:6px;padding-left:28px}
+ .step::before{left:6px} .step::after{left:0}
+ .grade{text-align:left} .body{margin-left:0}
+}
+.tip{margin:28px 0 0;padding:16px 20px;border-left:4px solid var(--green);background:var(--soft);border-radius:0 12px 12px 0;max-width:80ch}
+
+/* check */
+.big{display:flex;flex-wrap:wrap;align-items:baseline;gap:18px;margin:12px 0 24px}
+.big .num{font-weight:800;font-size:clamp(3rem,8vw,5.5rem);color:var(--navy);line-height:1}
+.big .num em{font-style:normal;color:var(--green)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .big .num{color:#fff} }
+.big p{margin:0;font-weight:500;max-width:40ch}
+.ok{font-weight:700;color:#4A6B00}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ok{color:var(--green)} }
+.cov td:nth-child(3){min-width:280px}
+.bars{margin:20px 0}
+.bars-legend{display:flex;flex-wrap:wrap;gap:16px;font-size:.85rem;margin-bottom:12px;color:var(--muted)}
+.bars-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.k1{background:var(--navy)} .k2{background:var(--green)} .k3{background:#7C7AC6}
+.bar-row{display:grid;grid-template-columns:170px 1fr 36px;gap:12px;align-items:center;padding:5px 0}
+.bar-lbl{font-weight:600;font-size:.9rem}
+.bar-track{display:flex;height:26px;background:var(--soft);border-radius:6px;overflow:hidden}
+.seg{display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff}
+.seg.k2{color:var(--navy)}
+.bar-tot{font-weight:700;text-align:right}
+@media (max-width:560px){.bar-row{grid-template-columns:110px 1fr 30px}.bar-lbl{font-size:.8rem}}
+.points{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px}
+.points li{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--surface)}
+.points b{display:block;font-weight:700;margin-bottom:2px}
+.perjaar{background:var(--soft)}
+.perjaar h2{font-size:clamp(1.8rem,3.4vw,2.4rem);color:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .perjaar h2, :root:not([data-theme="light"]) .yr-head h3, :root:not([data-theme="light"]) .yr-ll{color:#fff} }
+.yr-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 24px}
+.yr-tabs button{font:600 .9rem Poppins,"Segoe UI",system-ui,sans-serif;background:var(--surface);color:var(--text);border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.yr-tabs button b{font-weight:700;font-size:.78rem;background:var(--chip-bg);color:var(--chip-text);border-radius:999px;padding:1px 8px}
+.yr-tabs button[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.yr-tabs button[aria-selected="true"] b{background:var(--green);color:var(--navy)}
+.yr-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:8px}
+.yr-head h3{margin:0;font-size:2rem;font-weight:800}
+.yr-head p{margin:0;font-weight:500} .yr-head b{font-weight:800}
+.yr-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;align-items:start}
+@media (max-width:900px){.yr-grid{grid-template-columns:1fr}}
+.yr-ll{font-size:1.1rem;font-weight:700;color:var(--navy);margin:24px 0 10px}
+.yr-ll span{font-weight:500;font-size:.85rem;color:var(--muted);margin-left:6px}
+.yr-step{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.yr-sp{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:4px}
+.yr-extra{margin:0;padding-left:18px} .yr-extra li{margin-bottom:6px}
+.yr-check{position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.yr-check h4{margin:0;font-size:1.1rem;font-weight:700}
+.yr-check ul{list-style:none;margin:0;padding:0}
+.yr-check li{border-top:1px solid var(--line);padding:10px 0}
+.yr-check label{display:grid;grid-template-columns:22px 1fr;gap:4px 10px;cursor:pointer}
+.yr-check input{width:18px;height:18px;accent-color:var(--navy);margin-top:3px;grid-row:span 3}
+.ck-codes{font-weight:700;font-size:.8rem;color:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ck-codes{color:var(--green)} }
+.ck-txt{font-size:.82rem;color:var(--muted);line-height:1.45}
+.yr-check input:checked ~ .ck-txt{text-decoration:line-through}
+.ck-count{margin:10px 0 0;font-weight:600;font-size:.88rem}
+.ck-who{grid-column:2;font-size:.75rem;font-weight:500;color:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ck-who{color:var(--green)} }
+.ck-who:empty{display:none}
+.yr-check input:disabled{cursor:not-allowed}
+@media print{ .yr-panel[hidden]{display:block!important} .yr-tabs{display:none} .yr-panel{break-before:page} .yr-check{position:static} }
+footer{background:var(--navy);color:#E6E6F7;padding:28px 0;font-size:.85rem}
+footer b{color:#fff}
+@media print{
+ nav.top{display:none} .hero,.ll-head,footer,thead th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .step,.points li,tr{break-inside:avoid} section{padding:32px 0}
+}
+
+.opv h2{font-size:clamp(1.8rem,3.4vw,2.4rem);color:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .opv h2{color:#fff} }
+.dash{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;margin:12px 0}
+.dash-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.kpi{background:var(--navy);color:#fff;border-radius:12px;padding:16px 18px}
+.kpi-n{display:block;font-weight:800;font-size:2rem;line-height:1.1;color:var(--green)}
+.kpi-l{font-size:.85rem;font-weight:500}
+.heat td{background:var(--surface);min-width:150px}
+.heat .cellbar{display:flex;align-items:center;gap:10px}
+.heat .track{flex:1;height:10px;background:var(--soft);border-radius:5px;overflow:hidden;min-width:60px}
+.heat .fill{display:block;height:100%;background:var(--green)}
+.heat .fill.done{background:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .heat .fill.done{background:#fff} }
+.heat .num{font-weight:600;font-size:.82rem;white-space:nowrap}
+.heat .na{color:var(--muted);font-size:.82rem}
+.cycle{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:c;position:relative}
+.cycle li{counter-increment:c;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:12px;padding:18px;position:relative}
+.cycle li::before{content:counter(c);display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--green);color:var(--navy);font-weight:800;align-items:center;justify-content:center;margin-bottom:8px}
+.cycle li:not(:last-child)::after{content:"";position:absolute;right:-12px;top:50%;width:10px;height:10px;border-top:3px solid var(--navy);border-right:3px solid var(--navy);transform:translateY(-50%) rotate(45deg)}
+.cycle b{display:block;font-weight:700;font-size:1.05rem}
+.cycle span{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:6px}
+.cycle p{margin:0;font-size:.9rem}
+.cycle-back{font-size:.85rem;color:var(--muted);margin:-4px 0 0}
+@media (max-width:860px){.cycle{grid-template-columns:1fr 1fr}.cycle li::after{display:none}}
+@media (max-width:520px){.cycle{grid-template-columns:1fr}}
+.cal{list-style:none;padding:28px 0 0;margin:8px 0;display:grid;grid-template-columns:repeat(7,minmax(130px,1fr));gap:10px;position:relative;min-width:900px}
+.cal::before{content:"";position:absolute;left:0;right:0;top:9px;height:3px;background:var(--grey)}
+.cal li{position:relative;padding-top:4px}
+.cal li::before{content:"";position:absolute;top:-25px;left:0;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--navy)}
+.cal li.key::before{background:var(--green);border-color:var(--green);width:18px;height:18px;top:-27px}
+.cal .m{display:block;font-weight:700;color:var(--navy);font-size:.9rem}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .cal .m{color:var(--green)} }
+.cal b{display:block;font-weight:600;font-size:.9rem}
+.cal p{margin:2px 0 0;font-size:.82rem;color:var(--muted)}
+.ev-form{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:12px;margin:12px 0 20px}
+.ev-form label,.ev-filter label{display:grid;gap:4px;font-weight:600;font-size:.85rem}
+.ev-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ev-row2{grid-template-columns:2fr 1fr 1fr}
+@media (max-width:760px){.ev-row,.ev-row2{grid-template-columns:1fr}}
+.ev-form select,.ev-form input,.ev-form textarea,.ev-filter select{font:400 .92rem Poppins,"Segoe UI",system-ui,sans-serif;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+.ev-form textarea{resize:vertical}
+.ev-form :focus-visible{outline:3px solid var(--green);outline-offset:1px}
+.ev-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.btn{font:600 .92rem Poppins,"Segoe UI",system-ui,sans-serif;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:10px 20px;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-sm{font:600 .78rem Poppins,"Segoe UI",system-ui,sans-serif;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px;cursor:pointer}
+.ev-msg{font-size:.85rem;font-weight:500}
+.ev-filter{display:flex;flex-wrap:wrap;gap:16px;align-items:end;margin-bottom:12px}
+.ev-filter .ev-open{display:flex;align-items:center;gap:8px;font-weight:500}
+.ev-list{display:grid;gap:12px}
+.ev{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:12px;padding:16px 18px}
+.ev.closed{border-left-color:var(--green)}
+.ev-top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+.ev-top b{font-weight:700}
+.ev-top .tag{font-size:.78rem;font-weight:600;background:var(--chip-bg);color:var(--chip-text);border-radius:999px;padding:2px 10px}
+.ev-top .by{font-size:.8rem;color:var(--muted);margin-left:auto}
+.ev dl{display:grid;grid-template-columns:150px 1fr;gap:4px 14px;margin:0;font-size:.9rem}
+.ev dt{font-weight:600;color:var(--muted)}
+.ev dd{margin:0;white-space:pre-wrap}
+@media (max-width:560px){.ev dl{grid-template-columns:1fr}}
+.ev-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:.88rem}
+.ev-act label{display:flex;gap:8px;align-items:center;font-weight:600}
+.ev-act input{width:18px;height:18px;accent-color:var(--navy)}
+
+.sj-bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:8px 0 18px}
+.sj-bar label{display:flex;align-items:center;gap:10px;font-weight:600}
+.sj-select{font:600 .95rem Poppins,"Segoe UI",system-ui,sans-serif;color:var(--navy);background:var(--surface);border:2px solid var(--navy);border-radius:999px;padding:6px 14px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .sj-select{color:#fff;border-color:var(--green)} }
+.sj-hint{margin:0}
+.sj-label{font-weight:600;font-size:.85rem;color:var(--muted);margin-left:4px}
+.todo{display:grid;gap:10px;margin:12px 0}
+.todo details{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.todo summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:center;padding:14px 18px;font-weight:700}
+.todo summary::-webkit-details-marker{display:none}
+.todo summary .track{height:10px;background:var(--soft);border-radius:5px;overflow:hidden}
+.todo summary .fill{display:block;height:100%;background:var(--green)}
+.todo summary .fill.done{background:var(--navy)}
+.todo summary .cnt{font-size:.85rem;font-weight:600;color:var(--muted);white-space:nowrap}
+.todo .lists{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:0 18px 16px}
+@media (max-width:700px){.todo .lists{grid-template-columns:1fr}.todo summary{grid-template-columns:1fr auto}.todo summary .track{grid-column:1/-1;grid-row:2}}
+.todo h5{margin:6px 0 8px;font-size:.9rem;font-weight:700}
+.todo ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.todo li{font-size:.86rem;border-left:4px solid var(--grey);padding:4px 0 4px 10px}
+.todo li.isdone{border-left-color:var(--green)}
+.todo li b{display:block;font-size:.78rem;color:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .todo li b{color:var(--green)} }
+.todo li .d{display:block;font-size:.76rem;color:var(--muted)}
+.todo .empty{font-size:.85rem;color:var(--muted)}
+#years td{vertical-align:middle}
+#years .track{display:block;height:10px;background:var(--soft);border-radius:5px;overflow:hidden;min-width:120px}
+#years .fill{display:block;height:100%;background:var(--green)}
+#years tr.cur td{font-weight:700}
+.ai-princ{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.ai-princ .card{border-top:5px solid var(--green)}
+.ai-tab th[scope=row]{width:18%;white-space:normal;color:var(--navy)}
+.ai-tab td:nth-child(2){width:28%}
+.ai-tab td:nth-child(4){width:30%}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ai-tab th[scope=row]{color:#fff} }
+.ai-tab td:nth-child(3){min-width:190px}
+.ai-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--navy);background:var(--green);border-radius:4px;padding:1px 6px;margin:2px 4px 2px 0}
+.ai-tag.ank{background:var(--chip-bg);color:var(--chip-text)}
+.ai-eind{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:12px 0}
+.ai-eind div{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:12px;padding:14px 16px}
+.ai-eind b{display:block;color:var(--navy);margin-bottom:4px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ai-eind b{color:var(--green)} }
+.ai-eind p{margin:0;font-size:.88rem}
+.ai-yr{margin-top:24px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:14px;padding:16px 18px}
+.ai-yr h4{margin:0 0 6px;font-size:1.05rem;font-weight:700;color:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .ai-yr h4{color:#fff} }
+.ai-yr p{margin:0 0 6px;font-size:.9rem}
+.ai-yr a{font-weight:600;color:var(--navy)}
+
+.ev-del{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.ev-ask{display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.86rem;font-weight:600}
+.ev-ask[hidden]{display:none}
+.btn-danger{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ev-delmsg{font-size:.82rem;color:var(--muted)}
+.sj-ro .yr-check .note{display:none}
+.ck-ro{margin:6px 0 4px;font-size:.85rem;font-weight:600;color:var(--navy)}
+.ck-ro:empty{display:none}
+.sj-ro .yr-check{background:var(--soft)}
+.sj-ro .yr-check input{opacity:.55}
+.ck-dl{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);display:grid;gap:8px}
+.ck-dl[hidden]{display:none}
+.ck-dl>span{font-weight:600;font-size:.85rem}
+.ck-dl>div{display:flex;gap:8px}
+.dl-msg{margin:0;font-size:.8rem;color:var(--muted)}
+.dl-msg:empty{display:none}
+.gate{display:none;padding:72px 0}
+body.locked .gate{display:block}
+body.locked main,body.locked nav.top{display:none}
+.g-card{max-width:640px;background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--green);border-radius:16px;padding:28px}
+.g-card h2{color:var(--navy);font-size:1.6rem;margin-bottom:10px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .g-card h2{color:#fff} }
+.g-card p{margin:0}
+.jp{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.jp-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline}
+.jp-head h4{margin:0;font-size:1.25rem;font-weight:800;color:var(--navy)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .jp-head h4{color:#fff} }
+.jp-sum{font-size:.88rem;font-weight:600;color:var(--muted)}
+.jp-help{margin:4px 0 14px}
+.jp-board{display:grid;grid-template-columns:repeat(6,minmax(150px,1fr));gap:10px;overflow-x:auto;padding-bottom:6px}
+.jp-col{background:var(--soft);border-radius:12px;display:flex;flex-direction:column;min-width:150px}
+.jp-todo{background:transparent;border:1.5px dashed var(--line)}
+.jp-ch{padding:10px 12px;border-bottom:3px solid var(--navy);position:relative}
+.jp-todo .jp-ch{border-bottom-color:var(--grey)}
+.jp-ch b{display:block;font-size:.9rem;font-weight:700}
+.jp-ch span{display:block;font-size:.72rem;color:var(--muted)}
+.jp-ch em{position:absolute;top:10px;right:10px;font-style:normal;font-size:.75rem;font-weight:700;background:var(--green);color:var(--navy);border-radius:999px;padding:0 8px}
+.jp-drop{flex:1;padding:8px;display:grid;gap:8px;align-content:start;min-height:120px;border-radius:0 0 12px 12px;transition:background .15s}
+.jp-drop.over{background:var(--on);outline:2px dashed var(--green);outline-offset:-4px}
+.jp-card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:10px;padding:8px 10px;font-size:.78rem;line-height:1.4}
+.jp-card[draggable="true"]{cursor:grab}
+.jp-card.dragging{opacity:.5}
+.jp-card.is-done{border-left-color:var(--green)}
+.jp-card b{display:block;color:var(--navy);font-size:.74rem}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .jp-card b{color:var(--green)} }
+.jp-card p{margin:2px 0 0;color:var(--text)}
+.jp-ll{display:block;font-size:.68rem;font-weight:600;color:var(--muted)}
+.jp-ok{display:inline-block;margin-top:4px;font-weight:700;font-size:.7rem;color:#4A6B00}
+.jp-sel{display:block;margin-top:6px}
+.jp-sel select{width:100%;font:500 .74rem Poppins,"Segoe UI",system-ui,sans-serif;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:3px 4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.jp-empty{margin:0;font-size:.75rem;color:var(--muted);text-align:center;padding:12px 4px}
+.jp-msg{margin:8px 0 0;font-size:.82rem;color:var(--muted)}
+.jp-msg:empty{display:none}
+@media print{.jp-sel{display:none}}
+.ck-klas{display:grid;gap:4px;margin:8px 0 6px;padding:10px;border-radius:10px;background:var(--soft)}
+.ck-klas[hidden]{display:none}
+.ck-klas label{display:flex;gap:8px;align-items:center;font-weight:700;font-size:.9rem}
+.ck-klas select{font:600 .9rem Poppins,"Segoe UI",system-ui,sans-serif;color:var(--navy);background:var(--surface);border:2px solid var(--navy);border-radius:999px;padding:3px 10px}
+.ck-klas span{font-size:.75rem;color:var(--muted)}
+.jp-cls{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.jp-cls i{font-style:normal;font-size:.68rem;font-weight:700;border-radius:999px;padding:0 7px;border:1px solid var(--line);color:var(--muted)}
+.jp-cls i.y{background:var(--green);border-color:var(--green);color:var(--navy)}
+.kl-bd{max-height:60vh;overflow:auto}
+.kl-row{display:grid!important;grid-template-columns:130px 1fr;align-items:center;gap:10px}
+.ck-klas{margin:8px 0 6px;padding:10px 12px;border-radius:10px;background:var(--soft);display:grid;gap:6px}
+.ck-klas p{margin:0}
+.kk-now{font-size:.9rem}
+.kk-info{font-size:.76rem;color:var(--muted)}
+.kk-btn{font:600 .78rem Poppins,"Segoe UI",system-ui,sans-serif;background:none;border:0;color:var(--navy);text-decoration:underline;cursor:pointer;padding:0}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .kk-btn{color:var(--green)} }
+.kk-pick{display:flex;flex-wrap:wrap;gap:6px}
+.kk-chip{font:700 .85rem Poppins,"Segoe UI",system-ui,sans-serif;background:var(--surface);color:var(--navy);border:2px solid var(--navy);border-radius:999px;padding:3px 12px;cursor:pointer}
+.kk-chip:hover,.kk-chip.on{background:var(--navy);color:#fff}
+.kk-new{display:flex;flex-wrap:wrap;gap:6px;align-items:end}
+.kk-new label{display:grid;gap:2px;font-size:.75rem;font-weight:600}
+.kk-new input{font:500 .88rem Poppins,"Segoe UI",system-ui,sans-serif;width:110px;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:5px 8px}
+.yr-check .kk-new label{display:grid;grid-template-columns:1fr;gap:2px;cursor:auto}
+.kk-msg{font-size:.78rem;color:var(--muted)}
+.kk-msg:empty{display:none}
+#sj-new{display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center}
+#sj-new[hidden]{display:none}
+.sj-ask{font-size:.85rem;font-weight:600}
+.sj-ask[hidden]{display:none}
+.sj-msg{margin:0}
+.lnk{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.lnk:empty{display:none}
+.lnk-a{display:inline-block;font-weight:600;font-size:.85rem;text-decoration:none;background:var(--navy);color:#fff;border-radius:999px;padding:6px 14px}
+.lnk-a:hover{background:var(--green);color:var(--navy)}
+.lnk-edit{font:500 .78rem Poppins,"Segoe UI",system-ui,sans-serif;color:var(--muted);background:transparent;border:1px dashed var(--line);border-radius:999px;padding:4px 10px;cursor:pointer}
+.lnk-edit:hover{color:var(--navy);border-color:var(--navy)}
+.sugdlg input{font:400 .95rem Poppins,"Segoe UI",system-ui,sans-serif;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:10px}
+
+.what-row{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.what-row .what{flex:1}
+.sug{flex:none;font:600 .78rem Poppins,"Segoe UI",system-ui,sans-serif;color:var(--navy);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:4px 10px;cursor:pointer;white-space:nowrap}
+.sug:hover{background:var(--green);border-color:var(--green)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .sug{color:#fff} :root:not([data-theme="light"]) .sug:hover{color:var(--navy)} }
+.sugdlg{border:0;border-radius:16px;padding:0;max-width:min(560px,calc(100vw - 32px));width:100%;background:var(--surface);color:var(--text);box-shadow:0 20px 60px rgba(6,3,141,.25)}
+.sugdlg::backdrop{background:rgba(6,3,141,.35)}
+.sugdlg .hd{background:var(--navy);color:#fff;padding:18px 22px}
+.sugdlg .hd b{display:block;font-size:1.15rem;font-weight:700}
+.sugdlg .hd span{font-size:.85rem;color:#E6E6F7}
+.sugdlg .bd{padding:18px 22px;display:grid;gap:10px}
+.sugdlg label{font-weight:600;font-size:.88rem;display:grid;gap:6px}
+.sugdlg textarea{font:400 .95rem Poppins,"Segoe UI",system-ui,sans-serif;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:10px;resize:vertical;min-height:110px}
+.sugdlg .ft{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:0 22px 20px}
+.sugdlg a.btn{text-decoration:none;display:inline-block}
+.sugdlg .btn-sm{font-size:.85rem;padding:8px 14px}
+.sugdlg .msg{font-size:.82rem;color:var(--muted)}
+
+.vercheck{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.vercheck div{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:12px;padding:14px 16px}
+.vk{display:block;font-size:.8rem;font-weight:600;color:var(--muted)}
+.vv{display:block;font-weight:600;margin-top:2px}
+.vercheck.warn div{border-left-color:var(--navy)}
+
+.where{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:20px 0 8px}
+.where div{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--green);border-radius:12px;padding:18px}
+.where b{display:block;font-weight:700;font-size:1.05rem;color:var(--navy);margin-bottom:4px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .where b{color:#fff} }
+.where p{margin:0;font-size:.9rem}
+.where em{font-style:normal;font-weight:600}
+
+</style>
+<style>.yr-grid{grid-template-columns:1fr!important}</style><style>.lnk-map{margin:0 0 0 auto}.yr-head{align-items:center}</style><style>.lnk-warn{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;background:#06038D;color:#fff;border-left:6px solid #95D600;border-radius:12px;padding:12px 16px;font:500 .9rem Poppins,"Segoe UI",system-ui,sans-serif;display:flex;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 8px 30px rgba(6,3,141,.3)}.lnk-warn button{font:600 .8rem Poppins,sans-serif;background:#95D600;color:#06038D;border:0;border-radius:999px;padding:6px 12px;cursor:pointer;flex:none}</style><style>.ll-head .lnk-map{margin:18px 0 0}.ll-head .lnk-a{background:#95D600;color:#06038D}.ll-head .lnk-a:hover{background:#fff;color:#06038D}</style></head>
+<body>
+<header class="hero">
+<div class="wrap">
+<h1>Leerlijnen <em>ICT</em></h1>
+<p class="lede">Drie doorlopende leerlijnen van kleuter tot 6de leerjaar, opgebouwd uit de leerplandoelen ICT van OP STAP. Bij elke stap staat het passende leerplandoel.</p>
+<ul class="facts">
+<li><b>86</b> leerplandoelen</li><li><b>3</b> leerlijnen</li><li>2de kleuter – 6de leerjaar</li><li id="ver-chip">Leerplanversie <b class="v-ver">V1.3</b> · gecontroleerd op <span class="v-chk">29/10/2026</span></li>
+</ul>
+</div>
+<svg aria-hidden="true" class="route" viewbox="0 0 460 300">
+<path d="M20 280 C 120 280, 120 190, 210 190 S 300 100, 400 100 L 440 20" fill="none" stroke="#95D600" stroke-dasharray="2 16" stroke-linecap="round" stroke-width="6"></path>
+<circle cx="20" cy="280" fill="#95D600" r="10"></circle><circle cx="210" cy="190" fill="#fff" r="10"></circle><circle cx="400" cy="100" fill="#fff" r="10"></circle><circle cx="440" cy="20" fill="#95D600" r="14"></circle>
+</svg>
+</header>
+<nav aria-label="Inhoud" class="top">
+<ul>
+<li><a href="#inleiding">Inleiding</a></li>
+<li><a href="#ll1">1 · Computationeel denken</a></li>
+<li><a href="#ll2">2 · Digitale informatieveiligheid</a></li>
+<li><a href="#ll3">3 · Mediawijsheid</a></li>
+<li><a href="#ll4">4 · AI</a></li>
+<li><a href="#perjaar">Per leerjaar</a></li>
+<li><a href="#check">Dekkingscheck</a></li>
+</ul>
+</nav>
+<main>
+<section class="intro" id="inleiding">
+<div class="wrap">
+<h2>Hoe de leerlijnen werken</h2>
+<p class="lead">Elke leerlijn toont eerst een overzichtsmatrix (welk doel in welk leerjaar) en daarna een groeipad: wat leerlingen per leerjaar leren, op welk niveau, en hoe dat er in de klas uitziet.</p>
+<div class="grid3">
+<a class="card" href="#ll1"><span class="n">Leerlijn 1 · domein 8.1</span><h4>Computationeel denken</h4><p>Inzicht in digitale systemen en de principes van computationeel denken.</p><span class="cnt">33 doelen</span></a>
+<a class="card" href="#ll2"><span class="n">Leerlijn 2 · domein 8.2</span><h4>Digitale informatieveiligheid</h4><p>Digitale geletterdheid en informatiegeletterdheid.</p><span class="cnt">35 doelen</span></a>
+<a class="card" href="#ll3"><span class="n">Leerlijn 3 · domein 8.3 en 8.4</span><h4>Mediawijsheid</h4><p>Digitale veiligheid, auteurs- en portretrecht en communiceren.</p><span class="cnt">18 doelen</span></a>
+<a class="card" href="#ll4"><span class="n">Leerlijn 4 · schooleigen</span><h4>Artificiële intelligentie</h4><p>De AI-leerlijn van de scholengroep voor het 5e en 6e leerjaar, gekoppeld aan Op.stap.</p><span class="cnt">9 rode draden</span></a>
+</div>
+<h3>Over deze tool</h3>
+<div class="grid3 about">
+<div class="card"><span class="n">Bronnen</span><h4>Een onderbouwde basisleerlijn</h4><p>De leerlijnen zijn opgebouwd uit de leerplandoelen ICT van Op.stap (Katholiek Onderwijs Vlaanderen) en de Leerlijn mediawijsheid van Mediawijs. Elke stap verwijst naar het leerplandoel; de niveaus en de aanvullingen komen uit Mediawijs.</p></div>
+<div class="card"><span class="n">Voor leerkrachten</span><h4>Een inspiratiemodel</h4><p>Een interactieve tool voor de leerkracht en het schoolteam: per leerjaar zie je wat aan bod komt in de vier leerlijnen, met suggesties voor in de les. Een school maakt er haar eigen leerlijn van.</p></div>
+<div class="card"><span class="n">Samen verder</span><h4>Een tweerichtingsmodel</h4><p>Leerkrachten sturen bij elk leerdoel met de knop ✎ Suggestie een idee, lesmateriaal of opmerking door naar het ICT-team. Zo werkt de tool vraaggestuurd: wat leerkrachten nodig hebben, komt terug in de leerlijn. Tegelijk inspireert ze en versterkt ze de samenwerking.</p></div>
+</div>
+<h3>Vier niveaus, naar de Leerlijn mediawijsheid van Mediawijs</h3>
+<p class="note">Elk niveau is een stap vooruit in autonomie en complexiteit. ‘Onder begeleiding’ in het leerplan komt overeen met beginnend.</p>
+<div class="levels">
+<div><div class="bar"><i style="width:25%"></i></div><b>Verkennend</b><span>Volledig met hulp; aangereikte voorbeelden verkennen.</span><span class="when">Kleuter, 1ste leerjaar</span></div>
+<div><div class="bar"><i style="width:50%"></i></div><b>Beginnend</b><span>Deels met hulp; onthouden en herkennen.</span><span class="when">2de – 4de leerjaar</span></div>
+<div><div class="bar"><i style="width:75%"></i></div><b>Gevorderd</b><span>Zelfstandig; begrijpen en toepassen.</span><span class="when">5de – 6de leerjaar</span></div>
+<div><div class="bar"><i style="width:100%"></i></div><b>Expert</b><span>Anderen begeleiden; reflecteren en zelf creëren.</span><span class="when">Secundair; uitdaging in 6de</span></div>
+</div>
+<h3>Codes lezen</h3>
+<p class="note"><span class="code">8.1.GK3.2</span> = domein 8.1, kleuterschool, 3de kleuter, doel 2. <span class="code">8.2.GL5.3</span> = domein 8.2, lager onderwijs, 5de leerjaar, doel 3. In de matrices staat de code zonder domeinnummer; het domein staat erboven.</p>
+<p class="tip"><strong>Suggestie bij een leerplandoel?</strong> Klik bij een leerdoel op de knop ✎ Suggestie. Je e-mailprogramma opent met een ingevuld bericht aan rembertbasis.ict@sint-rembert.be.</p>
+</div>
+</section>
+<section aria-labelledby="ll1-t" id="ll1" style="padding:0">
+<header class="ll-head"><div class="wrap"><span class="ll-num">Leerlijn 1</span><h2 id="ll1-t">Computationeel denken</h2><p>Van een stappenplan volgen in de 2de kleuter naar zelf algoritmes met sequentie, herhaling en keuze ontwerpen in het 6de leerjaar. Vanaf het 1ste leerjaar begrijpen leerlingen ook stap voor stap hoe digitale systemen werken.</p><span class="ll-count"><b>33</b> leerplandoelen</span><div class="lnk lnk-map" data-step="map:leerlijn-1"></div></div></header>
+<div class="wrap" style="padding:16px 24px 64px">
+<h3>Spoor 1A · Inzicht in digitale systemen</h3>
+<p class="note">Eén stap per leerjaar, van het 1ste tot het 6de leerjaar.</p>
+<ol class="path">
+<li class="step">
+<div class="grade">1ste leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Gebruikt de begrippen digitaal en het internet; onderscheidt analoog en digitaal.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL1.1" data-t="Gebruikt de begrippen digitaal en het internet; onderscheidt analoog en digitaal." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL1.1</span><span class="lvl lvl-verkennend">Verkennend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een tekening met kleurpotloden naast een tekening in een app; videobellen met familie in het buitenland.</p><div class="lnk" data-step="1ste-leerjaar_8-1-GL1-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">2de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Gebruikt de begrippen hardware en software en weet dat hardware niet werkt zonder software.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL2.1" data-t="Gebruikt de begrippen hardware en software en weet dat hardware niet werkt zonder software." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL2.1</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Klasspeurtocht: hardware aanraken, software (apps, Bingel, Paint) aanwijzen.</p><div class="lnk" data-step="2de-leerjaar_8-1-GL2-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">3de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Gebruikt de begrippen invoer, verwerking, uitvoer en opslag.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL3.1" data-t="Gebruikt de begrippen invoer, verwerking, uitvoer en opslag." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL3.1</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Sinterklaaslijstje typen en afdrukken; elk onderdeel krijgt een label.</p><div class="lnk" data-step="3de-leerjaar_8-1-GL3-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">4de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Gebruikt de begrippen verzenden, ontvangen, offline en online.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL4.1" data-t="Gebruikt de begrippen verzenden, ontvangen, offline en online." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL4.1</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Rollenspel van een zoekvraag naar Google en terug; een afbeelding opslaan maakt ze offline.</p><div class="lnk" data-step="4de-leerjaar_8-1-GL4-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">5de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent de samenhang tussen invoer, verwerking, uitvoer en opslag; begrijpt hoe systemen verbonden zijn (kabel, wifi, mobiel internet); kent het begrip verbinding.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL5.1, 8.1.GL5.2, 8.1.GL5.3" data-t="Kent de samenhang tussen invoer, verwerking, uitvoer en opslag; begrijpt hoe systemen verbonden zijn (kabel, wifi, mobiel internet); kent het begrip verbinding." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL5.1</span><span class="code">8.1.GL5.2</span><span class="code">8.1.GL5.3</span><span class="lvl lvl-gevorderd">Gevorderd</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een presentatie maken en elke handeling benoemen; de wifi-punten van de school in kaart brengen.</p><div class="lnk" data-step="5de-leerjaar_8-1-GL5-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">6de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Begrijpt gegevensuitwisseling tussen systemen en verwerking en opslag in de cloud; kent de begrippen informatieverwerking en netwerk.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL6.1, 8.1.GL6.2, 8.1.GL6.3" data-t="Begrijpt gegevensuitwisseling tussen systemen en verwerking en opslag in de cloud; kent de begrippen informatieverwerking en netwerk." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL6.1</span><span class="code">8.1.GL6.2</span><span class="code">8.1.GL6.3</span><span class="lvl lvl-gevorderd">Gevorderd</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een Bingel-oefening volgen: welke gegevens gaan naar de server en welke feedback komt terug; slimme speaker; online gamen in realtime.</p><div class="lnk" data-step="6de-leerjaar_8-1-GL6-1"></div>
+</div></li>
+</ol>
+<h3>Spoor 1B · Principes van computationeel denken</h3>
+<div class="scroll"><table class="matrix"><caption>Principes van computationeel denken – codes uit domein 8.1</caption><thead><tr><th scope="col">Leerjaar</th><th scope="col">Stappenplan</th><th scope="col">Abstractie</th><th scope="col">Decompositie</th><th scope="col">Patroonherkenning</th><th scope="col">Algoritme en sequentie</th><th scope="col">Keuze en herhaling</th></tr></thead><tbody><tr><th scope="row">2de kleuter</th><td class="on"><span class="code">GK2.1</span></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">3de kleuter</th><td class="on"><span class="code">GK3.1</span></td><td></td><td></td><td class="on"><span class="code">GK3.2</span></td><td></td><td></td></tr><tr><th scope="row">1ste leerjaar</th><td></td><td class="on"><span class="code">GL1.2</span></td><td></td><td class="on"><span class="code">GL1.3</span></td><td class="on"><span class="code">GL1.4</span></td><td></td></tr><tr><th scope="row">2de leerjaar</th><td></td><td class="on"><span class="code">GL2.2</span></td><td class="on"><span class="code">GL2.3</span></td><td class="on"><span class="code">GL2.4</span></td><td class="on"><span class="code">GL2.5</span></td><td></td></tr><tr><th scope="row">3de leerjaar</th><td></td><td class="on"><span class="code">GL3.2</span></td><td class="on"><span class="code">GL3.3</span></td><td class="on"><span class="code">GL3.4</span></td><td class="on"><span class="code">GL3.5</span></td><td></td></tr><tr><th scope="row">4de leerjaar</th><td></td><td class="on"><span class="code">GL4.3</span></td><td class="on"><span class="code">GL4.4</span></td><td class="on"><span class="code">GL4.5</span></td><td class="on"><span class="code">GL4.2</span><span class="code">GL4.6</span></td><td></td></tr><tr><th scope="row">5de leerjaar</th><td></td><td></td><td></td><td></td><td></td><td class="on"><span class="code">GL5.4</span><span class="code">GL5.5</span><span class="code">GL5.6</span></td></tr><tr><th scope="row">6de leerjaar</th><td></td><td></td><td></td><td></td><td></td><td class="on"><span class="code">GL6.4</span></td></tr></tbody></table></div>
+<ol class="path">
+<li class="step">
+<div class="grade">2de kleuter</div>
+<div class="body">
+<div class="what-row"><p class="what">Past onder begeleiding een eenvoudig stappenplan toe.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GK2.1" data-t="Past onder begeleiding een eenvoudig stappenplan toe." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GK2.1</span><span class="lvl lvl-verkennend">Verkennend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Pictokaarten om een jas aan te trekken; de Bee-Bot één stap laten zetten.</p><div class="lnk" data-step="2de-kleuter_8-1-GK2-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">3de kleuter</div>
+<div class="body">
+<div class="what-row"><p class="what">Stelt onder begeleiding een stappenplan op, past het toe en controleert het; herkent patronen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GK3.1, 8.1.GK3.2" data-t="Stelt onder begeleiding een stappenplan op, past het toe en controleert het; herkent patronen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GK3.1</span><span class="code">8.1.GK3.2</span><span class="lvl lvl-verkennend">Verkennend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een route uitleggen met pijlkaarten en daarna met de Bee-Bot testen; een kralenketting volgens een patroon.</p><div class="lnk" data-step="3de-kleuter_8-1-GK3-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">1ste leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Ontwerpt, test en debugt onder begeleiding een lineair algoritme met abstractie, patroonherkenning en sequentie.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL1.2, 8.1.GL1.3, 8.1.GL1.4" data-t="Ontwerpt, test en debugt onder begeleiding een lineair algoritme met abstractie, patroonherkenning en sequentie." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL1.2</span><span class="code">8.1.GL1.3</span><span class="code">8.1.GL1.4</span><span class="lvl lvl-verkennend">Verkennend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Veters strikken als algoritme; klap-klap-stop; bij het lezen alleen op de letters letten.</p><div class="lnk" data-step="1ste-leerjaar_8-1-GL1-2"></div>
+</div></li>
+<li class="step">
+<div class="grade">2de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Voegt decompositie toe aan de vier principes.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL2.2, 8.1.GL2.3, 8.1.GL2.4, 8.1.GL2.5" data-t="Voegt decompositie toe aan de vier principes." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL2.2</span><span class="code">8.1.GL2.3</span><span class="code">8.1.GL2.4</span><span class="code">8.1.GL2.5</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>De leerkracht voert de instructies voor een boterham met choco letterlijk uit en de klas debugt; dieren sorteren op aantal poten.</p><div class="lnk" data-step="2de-leerjaar_8-1-GL2-2"></div>
+</div></li>
+<li class="step">
+<div class="grade">3de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Past de vier principes toe op complexere taken.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL3.2, 8.1.GL3.3, 8.1.GL3.4, 8.1.GL3.5" data-t="Past de vier principes toe op complexere taken." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL3.2</span><span class="code">8.1.GL3.3</span><span class="code">8.1.GL3.4</span><span class="code">8.1.GL3.5</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een algoritme schrijven waarmee een klasgenoot een Lego-figuur bouwt; getallenpatronen; een cake bakken in deelstappen.</p><div class="lnk" data-step="3de-leerjaar_8-1-GL3-2"></div>
+</div></li>
+<li class="step">
+<div class="grade">4de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent het begrip algoritme en gebruikt de principes in schoolse taken.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL4.2, 8.1.GL4.3, 8.1.GL4.4, 8.1.GL4.5, 8.1.GL4.6" data-t="Kent het begrip algoritme en gebruikt de principes in schoolse taken." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL4.2</span><span class="code">8.1.GL4.3</span><span class="code">8.1.GL4.4</span><span class="code">8.1.GL4.5</span><span class="code">8.1.GL4.6</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Algoritme voor ×50; een spellingsregel als patroon; een spreekbeurt opsplitsen; een samenvatting als abstractie.</p><div class="lnk" data-step="4de-leerjaar_8-1-GL4-2"></div>
+</div></li>
+<li class="step">
+<div class="grade">5de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Ontwerpt, test en debugt algoritmes met keuze (als … dan), herhaling en een combinatie ervan.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL5.4, 8.1.GL5.5, 8.1.GL5.6" data-t="Ontwerpt, test en debugt algoritmes met keuze (als … dan), herhaling en een combinatie ervan." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL5.4</span><span class="code">8.1.GL5.5</span><span class="code">8.1.GL5.6</span><span class="lvl lvl-gevorderd">Gevorderd</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Groen kaartje = rechtstaan; een tafel van 1 tot 10 met herhaling; een route rond een obstakel, eerst op de speelplaats en dan in Scratch.</p><div class="lnk" data-step="5de-leerjaar_8-1-GL5-4"></div>
+</div></li>
+<li class="step">
+<div class="grade">6de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Combineert sequentie, herhaling en keuze in een zelf ontworpen algoritme en debugt het.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL6.4" data-t="Combineert sequentie, herhaling en keuze in een zelf ontworpen algoritme en debugt het." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.1.GL6.4</span><span class="lvl lvl-gevorderd">Gevorderd (expert als uitdaging)</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Stoelendans als algoritme uitschrijven en daarna programmeren; sterke leerlingen begeleiden een groepje.</p><div class="lnk" data-step="6de-leerjaar_8-1-GL6-4"></div>
+</div></li>
+</ol>
+<p class="tip">Werk eerst unplugged (zonder toestel) en pas daarna plugged (Bee-Bot, ScratchJr, Scratch). Zo blijft het denkproces centraal en niet de knoppen.</p>
+</div>
+</section>
+<section aria-labelledby="ll2-t" id="ll2" style="padding:0">
+<header class="ll-head"><div class="wrap"><span class="ll-num">Leerlijn 2</span><h2 id="ll2-t">Digitale informatieveiligheid</h2><p>Eerst toestellen, toetsenbord en bestanden vlot gebruiken, daarna gericht zoeken en bronnen beoordelen, tot leerlingen in het 6de leerjaar bronnen toetsen op betrouwbaarheid en weten wat AI is. Sluit aan bij de Mediawijs-competenties bedienen, navigeren en organiseren.</p><span class="ll-count"><b>35</b> leerplandoelen</span><div class="lnk lnk-map" data-step="map:leerlijn-2"></div></div></header>
+<div class="wrap" style="padding:16px 24px 64px">
+<h3>Spoor 2A · Digitale geletterdheid</h3>
+<div class="scroll"><table class="matrix"><caption>Digitale geletterdheid – codes uit domein 8.2</caption><thead><tr><th scope="col">Leerjaar</th><th scope="col">Toestellen bedienen</th><th scope="col">Invoer- en uitvoerapparaten</th><th scope="col">Bestanden</th><th scope="col">Systeeminstellingen</th></tr></thead><tbody><tr><th scope="row">3de kleuter</th><td class="on"><span class="code">GK3.1</span><span class="code">GK3.2</span></td><td></td><td></td><td></td></tr><tr><th scope="row">1ste leerjaar</th><td class="on"><span class="code">GL1.1</span><span class="code">GL1.2</span></td><td></td><td></td><td></td></tr><tr><th scope="row">2de leerjaar</th><td></td><td class="on"><span class="code">GL2.1</span></td><td></td><td></td></tr><tr><th scope="row">3de leerjaar</th><td></td><td class="on"><span class="code">GL3.2</span></td><td class="on"><span class="code">GL3.1</span><span class="code">GL3.3</span></td><td></td></tr><tr><th scope="row">4de leerjaar</th><td></td><td class="on"><span class="code">GL4.1</span></td><td class="on"><span class="code">GL4.2</span></td><td></td></tr><tr><th scope="row">5de leerjaar</th><td></td><td class="on"><span class="code">GL5.1</span></td><td class="on"><span class="code">GL5.2</span><span class="code">GL5.3</span></td><td class="on"><span class="code">GL5.4</span></td></tr><tr><th scope="row">6de leerjaar</th><td></td><td class="on"><span class="code">GL6.1</span></td><td class="on"><span class="code">GL6.2</span><span class="code">GL6.3</span></td><td class="on"><span class="code">GL6.4</span></td></tr></tbody></table></div>
+<ol class="path">
+<li class="step">
+<div class="grade">3de kleuter</div>
+<div class="body">
+<div class="what-row"><p class="what">Gebruikt enkele knoppen (aan/uit, volume, start, terug); swipet, opent en sluit apps.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GK3.1, 8.2.GK3.2" data-t="Gebruikt enkele knoppen (aan/uit, volume, start, terug); swipet, opent en sluit apps." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GK3.1</span><span class="code">8.2.GK3.2</span><span class="lvl lvl-verkennend">Verkennend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een boekjes-app openen en door de pagina's swipen.</p><div class="lnk" data-step="3de-kleuter_8-2-GK3-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">1ste leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Start een laptop op en opent het startmenu; muisvaardigheden, vensters, schuifbalken, in- en uitzoomen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL1.1, 8.2.GL1.2" data-t="Start een laptop op en opent het startmenu; muisvaardigheden, vensters, schuifbalken, in- en uitzoomen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL1.1</span><span class="code">8.2.GL1.2</span><span class="lvl lvl-verkennend">Verkennend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een educatief spelletje selecteren en starten.</p><div class="lnk" data-step="1ste-leerjaar_8-2-GL1-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">2de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Basisgebruik van toetsenbord en muis of touchpad.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL2.1" data-t="Basisgebruik van toetsenbord en muis of touchpad." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL2.1</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Voor- en familienaam typen met de spatiebalk ertussen.</p><div class="lnk" data-step="2de-leerjaar_8-2-GL2-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">3de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent het begrip bestand; typt hoofdletters met Shift; opent en sluit bestanden via de mappenstructuur.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL3.1, 8.2.GL3.2, 8.2.GL3.3" data-t="Kent het begrip bestand; typt hoofdletters met Shift; opent en sluit bestanden via de mappenstructuur." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL3.1</span><span class="code">8.2.GL3.2</span><span class="code">8.2.GL3.3</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een taak openen via Documenten &gt; Klas 3; een afbeelding verslepen op het digitale bord.</p><div class="lnk" data-step="3de-leerjaar_8-2-GL3-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">4de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Combineert muis, toetsenbord en printer in één taak; opent bestanden met bijhorende media via mappen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL4.1, 8.2.GL4.2" data-t="Combineert muis, toetsenbord en printer in één taak; opent bestanden met bijhorende media via mappen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL4.1</span><span class="code">8.2.GL4.2</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een digitale spellingsoefening invullen en afdrukken.</p><div class="lnk" data-step="4de-leerjaar_8-2-GL4-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">5de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Typt vlot (AltGr voor € en @); bedient een beamer; opent, bewaart en sluit bestanden; beheert bestanden (juiste map, duidelijke naam, verwijderen, kopiëren, verplaatsen); zet wifi aan en uit.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL5.1, 8.2.GL5.2, 8.2.GL5.3, 8.2.GL5.4" data-t="Typt vlot (AltGr voor € en @); bedient een beamer; opent, bewaart en sluit bestanden; beheert bestanden (juiste map, duidelijke naam, verwijderen, kopiëren, verplaatsen); zet wifi aan en uit." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL5.1</span><span class="code">8.2.GL5.2</span><span class="code">8.2.GL5.3</span><span class="code">8.2.GL5.4</span><span class="lvl lvl-gevorderd">Gevorderd</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>De eigen presentatie bewaren als ‘2026-11-spreekbeurt-naam’ in de klasmap en zelf projecteren.</p><div class="lnk" data-step="5de-leerjaar_8-2-GL5-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">6de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Gebruikt Tab en sneltoetsen (Ctrl, Shift, Alt, Windows-toets); downloadt en uploadt; maakt en hernoemt mappen en haalt verwijderde bestanden terug; past taal- en weergave-instellingen aan.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL6.1, 8.2.GL6.2, 8.2.GL6.3, 8.2.GL6.4" data-t="Gebruikt Tab en sneltoetsen (Ctrl, Shift, Alt, Windows-toets); downloadt en uploadt; maakt en hernoemt mappen en haalt verwijderde bestanden terug; past taal- en weergave-instellingen aan." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL6.1</span><span class="code">8.2.GL6.2</span><span class="code">8.2.GL6.3</span><span class="code">8.2.GL6.4</span><span class="lvl lvl-gevorderd">Gevorderd</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een online formulier invullen met Tab; een bestand uploaden naar het leerplatform.</p><div class="lnk" data-step="6de-leerjaar_8-2-GL6-1"></div>
+</div></li>
+</ol>
+<h3>Spoor 2B · Informatiegeletterdheid</h3>
+<div class="scroll"><table class="matrix"><caption>Informatiegeletterdheid – codes uit domein 8.2</caption><thead><tr><th scope="col">Leerjaar</th><th scope="col">Navigeren in een toepassing</th><th scope="col">Zoekstrategie</th><th scope="col">Bronnen beoordelen</th><th scope="col">Artificiële intelligentie</th></tr></thead><tbody><tr><th scope="row">3de kleuter</th><td class="on"><span class="code">GK3.3</span></td><td></td><td></td><td></td></tr><tr><th scope="row">1ste leerjaar</th><td class="on"><span class="code">GL1.3</span></td><td></td><td></td><td></td></tr><tr><th scope="row">2de leerjaar</th><td class="on"><span class="code">GL2.2</span></td><td></td><td></td><td></td></tr><tr><th scope="row">3de leerjaar</th><td></td><td class="on"><span class="code">GL3.5</span><span class="code">GL3.6</span><span class="code">GL3.7</span></td><td></td><td></td></tr><tr><th scope="row">4de leerjaar</th><td></td><td class="on"><span class="code">GL4.3</span><span class="code">GL4.4</span><span class="code">GL4.5</span><span class="code">GL4.7</span></td><td class="on"><span class="code">GL4.6</span></td><td></td></tr><tr><th scope="row">5de leerjaar</th><td></td><td class="on"><span class="code">GL5.5</span></td><td class="on"><span class="code">GL5.6</span></td><td></td></tr><tr><th scope="row">6de leerjaar</th><td></td><td class="on"><span class="code">GL6.5</span></td><td class="on"><span class="code">GL6.6</span></td><td class="on"><span class="code">GL6.7</span><span class="code">GL6.8</span></td></tr></tbody></table></div>
+<ol class="path">
+<li class="step">
+<div class="grade">3de kleuter</div>
+<div class="body">
+<div class="what-row"><p class="what">Navigeert en zoekt in een afgebakende app.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GK3.3" data-t="Navigeert en zoekt in een afgebakende app." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GK3.3</span><span class="lvl lvl-verkennend">Verkennend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een boekje kiezen om te laten voorlezen.</p><div class="lnk" data-step="3de-kleuter_8-2-GK3-3"></div>
+</div></li>
+<li class="step">
+<div class="grade">1ste leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Navigeert in een afgebakende toepassing.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL1.3" data-t="Navigeert in een afgebakende toepassing." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL1.3</span><span class="lvl lvl-verkennend">Verkennend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>In een digitaal leesboek naar het volgende hoofdstuk gaan.</p><div class="lnk" data-step="1ste-leerjaar_8-2-GL1-3"></div>
+</div></li>
+<li class="step">
+<div class="grade">2de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Navigeert in de leeromgeving tussen tabbladen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL2.2" data-t="Navigeert in de leeromgeving tussen tabbladen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL2.2</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>De oefening vinden die de juf of meester klaarzette.</p><div class="lnk" data-step="2de-leerjaar_8-2-GL2-2"></div>
+</div></li>
+<li class="step">
+<div class="grade">3de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kiest een zoektool, formuleert een zoekopdracht en werkt onder begeleiding een zoekstrategie uit.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL3.5, 8.2.GL3.6, 8.2.GL3.7" data-t="Kiest een zoektool, formuleert een zoekopdracht en werkt onder begeleiding een zoekstrategie uit." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL3.5</span><span class="code">8.2.GL3.6</span><span class="code">8.2.GL3.7</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Zoekvragen koppelen aan de juiste tool: zoekmachine, Wikipedia, routeplanner, woordenboek.</p><div class="lnk" data-step="3de-leerjaar_8-2-GL3-5"></div>
+</div></li>
+<li class="step">
+<div class="grade">4de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Formuleert eerst een zoekvraag (wat wil ik weten?), dan een zoekopdracht; kiest een zoektool; beoordeelt zoekresultaten; past computationeel denken toe.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL4.3, 8.2.GL4.4, 8.2.GL4.5, 8.2.GL4.6, 8.2.GL4.7" data-t="Formuleert eerst een zoekvraag (wat wil ik weten?), dan een zoekopdracht; kiest een zoektool; beoordeelt zoekresultaten; past computationeel denken toe." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL4.3</span><span class="code">8.2.GL4.4</span><span class="code">8.2.GL4.5</span><span class="code">8.2.GL4.6</span><span class="code">8.2.GL4.7</span><span class="lvl lvl-beginnend">Beginnend</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Zoekvraag ‘Welke planeten zijn er?’; zoeken op ‘katachtigen’ in plaats van elk dier apart (abstractie).</p><div class="lnk" data-step="4de-leerjaar_8-2-GL4-3"></div>
+</div></li>
+<li class="step">
+<div class="grade">5de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Werkt zelf een zoekstrategie uit en stuurt bij; beoordeelt bronnen op bruikbaarheid met aangereikte criteria.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL5.5, 8.2.GL5.6" data-t="Werkt zelf een zoekstrategie uit en stuurt bij; beoordeelt bronnen op bruikbaarheid met aangereikte criteria." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL5.5</span><span class="code">8.2.GL5.6</span><span class="lvl lvl-gevorderd">Gevorderd</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>De zoekopdracht ‘oude Rome’ opsplitsen in Rome, Pompeï en Carthago (decompositie).</p><div class="lnk" data-step="5de-leerjaar_8-2-GL5-5"></div>
+</div></li>
+<li class="step">
+<div class="grade">6de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Zoekt met alle vier de principes; beoordeelt bronnen op bruikbaarheid, betrouwbaarheid en correctheid; kent AI en het begrip taalmodel en geeft toepassingen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL6.5, 8.2.GL6.6, 8.2.GL6.7, 8.2.GL6.8" data-t="Zoekt met alle vier de principes; beoordeelt bronnen op bruikbaarheid, betrouwbaarheid en correctheid; kent AI en het begrip taalmodel en geeft toepassingen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.2.GL6.5</span><span class="code">8.2.GL6.6</span><span class="code">8.2.GL6.7</span><span class="code">8.2.GL6.8</span><span class="lvl lvl-gevorderd">Gevorderd</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een klasuitstap naar het Gravensteen voorbereiden; twee websites vergelijken (auteur, datum, bronnen); spraakherkenning, vertaaltools en aanbevelingen herkennen.</p><div class="lnk" data-step="6de-leerjaar_8-2-GL6-5"></div>
+</div></li>
+</ol>
+<p class="tip"><strong>Aanvulling uit de Mediawijs-leerlijn (geen leerplandoel):</strong> laat leerlingen in de 1ste graad al verkennen wat echt en wat verzonnen is. Zo bereidt u de bronbeoordeling uit het 4de leerjaar voor.</p>
+</div>
+</section>
+<section aria-labelledby="ll3-t" id="ll3" style="padding:0">
+<header class="ll-head"><div class="wrap"><span class="ll-num">Leerlijn 3</span><h2 id="ll3-t">Mediawijsheid</h2><p>Vanaf het 1ste leerjaar veilig omgaan met account en gegevens; in de 3de graad rechten, de impact van digitale media en communicatietools. De twee doelen van 8.4 (communiceren) horen bij het Mediawijs-mediadoel interageren.</p><span class="ll-count"><b>18</b> leerplandoelen</span><div class="lnk lnk-map" data-step="map:leerlijn-3"></div></div></header>
+<div class="wrap" style="padding:16px 24px 64px">
+<div class="scroll"><table class="matrix"><caption>Mediawijsheid – codes uit 8.3, communiceren uit 8.4</caption><thead><tr><th scope="col">Leerjaar</th><th scope="col">Account en wachtwoord</th><th scope="col">Persoonlijke gegevens en privacy</th><th scope="col">Jezelf en anderen beschermen</th><th scope="col">Impact van digitale media</th><th scope="col">Auteurs- en portretrecht</th><th scope="col">Communiceren (8.4)</th></tr></thead><tbody><tr><th scope="row">1ste leerjaar</th><td class="on"><span class="code">GL1.1</span></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">2de leerjaar</th><td class="on"><span class="code">GL2.1</span></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">3de leerjaar</th><td></td><td class="on"><span class="code">GL3.1</span></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">4de leerjaar</th><td></td><td class="on"><span class="code">GL4.1</span></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">5de leerjaar</th><td></td><td></td><td class="on"><span class="code">GL5.4</span></td><td></td><td class="on"><span class="code">GL5.1</span><span class="code">GL5.2</span><span class="code">GL5.3</span></td><td class="on"><span class="code">GL5.1</span></td></tr><tr><th scope="row">6de leerjaar</th><td></td><td></td><td class="on"><span class="code">GL6.2</span><span class="code">GL6.3</span></td><td class="on"><span class="code">GL6.4</span><span class="code">GL6.5</span><span class="code">GL6.6</span><span class="code">GL6.7</span><span class="code">GL6.8</span></td><td class="on"><span class="code">GL6.1</span></td><td class="on"><span class="code">GL6.1</span></td></tr></tbody></table></div>
+<h3>Spoor 3A · Digitale veiligheid</h3>
+<ol class="path">
+<li class="step">
+<div class="grade">1ste leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent het begrip account: gebruikersnaam, wachtwoord, je digitale identiteit in een app.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL1.1" data-t="Kent het begrip account: gebruikersnaam, wachtwoord, je digitale identiteit in een app." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.3.GL1.1</span><span class="lvl lvl-verkennend">Verkennend</span><span class="md">Mediawijs: interageren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Samen inloggen op het leerplatform; wat weet de app over mij?</p><div class="lnk" data-step="1ste-leerjaar_8-3-GL1-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">2de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Gaat veilig om met account en wachtwoord: een sterk wachtwoord kiezen en het niet doorgeven.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL2.1" data-t="Gaat veilig om met account en wachtwoord: een sterk wachtwoord kiezen en het niet doorgeven." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.3.GL2.1</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: verweren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>‘Je wachtwoord is als je tandenborstel’: niet uitlenen.</p><div class="lnk" data-step="2de-leerjaar_8-3-GL2-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">3de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent het begrip persoonlijke gegevens (naam, adres, telefoonnummer, geboortedatum, schoolaccount).</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL3.1" data-t="Kent het begrip persoonlijke gegevens (naam, adres, telefoonnummer, geboortedatum, schoolaccount)." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.3.GL3.1</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: verweren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Sorteerspel: wat mag je delen, wat niet?</p><div class="lnk" data-step="3de-leerjaar_8-3-GL3-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">4de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent het begrip online privacy: zelf kiezen wat je deelt en met wie.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL4.1" data-t="Kent het begrip online privacy: zelf kiezen wat je deelt en met wie." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.3.GL4.1</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: verweren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een veilige schuilnaam voor een spelletje bedenken.</p><div class="lnk" data-step="4de-leerjaar_8-3-GL4-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">5de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent mogelijkheden om zichzelf en anderen online te beschermen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL5.4" data-t="Kent mogelijkheden om zichzelf en anderen online te beschermen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.3.GL5.4</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: verweren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een sterk wachtwoord maken; weten bij wie je terechtkunt (Awel 102, Child Focus 116 000).</p><div class="lnk" data-step="5de-leerjaar_8-3-GL5-4"></div>
+</div></li>
+<li class="step">
+<div class="grade">6de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent de begrippen online veiligheid en nepnieuws (privacy-instellingen, grenzen stellen, netiquette) en beschermt zichzelf en anderen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL6.2, 8.3.GL6.3" data-t="Kent de begrippen online veiligheid en nepnieuws (privacy-instellingen, grenzen stellen, netiquette) en beschermt zichzelf en anderen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.3.GL6.2</span><span class="code">8.3.GL6.3</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: verweren, informeren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een nepbericht ontmaskeren; samen afspraken voor de klaschat opstellen.</p><div class="lnk" data-step="6de-leerjaar_8-3-GL6-2"></div>
+</div></li>
+<li class="step">
+<div class="grade">6de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Illustreert de impact van digitale media op de eigen leefwereld: ethisch, sociaal, regelgevend, gezondheid en veiligheid.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL6.4, 8.3.GL6.5, 8.3.GL6.6, 8.3.GL6.7, 8.3.GL6.8" data-t="Illustreert de impact van digitale media op de eigen leefwereld: ethisch, sociaal, regelgevend, gezondheid en veiligheid." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.3.GL6.4</span><span class="code">8.3.GL6.5</span><span class="code">8.3.GL6.6</span><span class="code">8.3.GL6.7</span><span class="code">8.3.GL6.8</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: verweren, amuseren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Screenshots van uitsluiting bespreken; influencers en reclame herkennen; cookiemeldingen; eigen schermtijd bijhouden. Lesmateriaal: De Schaal van M.</p><div class="lnk" data-step="6de-leerjaar_8-3-GL6-4"></div>
+</div></li>
+</ol>
+<h3>Spoor 3B · Auteurs- en portretrecht</h3>
+<ol class="path">
+<li class="step">
+<div class="grade">5de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent de basis van auteursrecht (wat iemand maakt, mag je niet zomaar gebruiken) en portretrecht (niet filmen, fotograferen of delen zonder toestemming).</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL5.1, 8.3.GL5.2, 8.3.GL5.3" data-t="Kent de basis van auteursrecht (wat iemand maakt, mag je niet zomaar gebruiken) en portretrecht (niet filmen, fotograferen of delen zonder toestemming)." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.3.GL5.1</span><span class="code">8.3.GL5.2</span><span class="code">8.3.GL5.3</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: creëren, interageren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Mag deze afbeelding uit een zoekmachine in mijn presentatie? Klasfoto op de schoolwebsite: wie geeft toestemming?</p><div class="lnk" data-step="5de-leerjaar_8-3-GL5-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">6de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent de begrippen auteursrecht en portretrecht.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL6.1" data-t="Kent de begrippen auteursrecht en portretrecht." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.3.GL6.1</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: creëren, informeren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een bronvermelding toevoegen aan de eigen presentatie; rechtenvrije beeldbanken gebruiken.</p><div class="lnk" data-step="6de-leerjaar_8-3-GL6-1"></div>
+</div></li>
+</ol>
+<h3>Spoor 3C · Communiceren</h3>
+<ol class="path">
+<li class="step">
+<div class="grade">5de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent mogelijkheden van digitale tools om te communiceren: berichten, e-mail, chat.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.4.GL5.1" data-t="Kent mogelijkheden van digitale tools om te communiceren: berichten, e-mail, chat." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.4.GL5.1</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: interageren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Een e-mail naar de leerkracht sturen met onderwerp en aanspreking.</p><div class="lnk" data-step="5de-leerjaar_8-4-GL5-1"></div>
+</div></li>
+<li class="step">
+<div class="grade">6de leerjaar</div>
+<div class="body">
+<div class="what-row"><p class="what">Kent ook reacties en videogesprekken; onderscheidt realtime, synchroon en asynchroon.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.4.GL6.1" data-t="Kent ook reacties en videogesprekken; onderscheidt realtime, synchroon en asynchroon." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div>
+<div class="meta"><span class="code">8.4.GL6.1</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: interageren</span></div>
+<p class="klas"><span>Suggesties voor in de les</span>Communicatietools sorteren: videogesprek (synchroon) tegenover e-mail (asynchroon).</p><div class="lnk" data-step="6de-leerjaar_8-4-GL6-1"></div>
+</div></li>
+</ol>
+<h3>Aanvullingen uit de Mediawijs-leerlijn</h3>
+<p class="note">Geen leerplandoelen en dus facultatief. Het leerplan start mediawijsheid pas in het 1ste leerjaar; deze stappen bereiden de latere doelen voor.</p>
+<div class="scroll"><table class="plain"><thead><tr><th scope="col">Fase</th><th scope="col">Facultatieve stap</th><th scope="col">Bereidt voor op</th></tr></thead><tbody><tr><td>Kleuter</td><td>Verkent voorbeelden van respectvol en respectloos gedrag online.</td><td><span class="code">8.3.GL6.4</span></td></tr><tr><td>Kleuter</td><td>Verkent op basis van voorbeelden het belang van evenwichtig mediagebruik.</td><td><span class="code">8.3.GL6.7</span></td></tr><tr><td>Kleuter</td><td>Zegt met welke media hij of zij zich amuseert.</td><td><span class="code">8.3.GL6.5</span></td></tr><tr><td>1ste graad</td><td>Verkent kansen en valkuilen van de online wereld en hoe je die signaleert.</td><td><span class="code">8.3.GL5.4</span></td></tr><tr><td>1ste graad</td><td>Herkent voorbeelden van effecten van media op de eigen gezondheid.</td><td><span class="code">8.3.GL6.7</span></td></tr><tr><td>2de graad</td><td>Verkent een aantal basisregels van auteurs- en portretrecht.</td><td><span class="code">8.3.GL5.1</span><span class="code">8.3.GL5.2</span><span class="code">8.3.GL5.3</span></td></tr></tbody></table></div>
+</div>
+</section>
+<section aria-labelledby="ll4-t" id="ll4" style="padding:0">
+<header class="ll-head"><div class="wrap"><span class="ll-num">Leerlijn 4 · schooleigen</span><h2 id="ll4-t">Artificiële intelligentie</h2><p>De AI-leerlijn van Scholengroep Sint-Rembert voor de 3e graad basisonderwijs: ontdekken en benoemen. Leerlingen leren wat AI is en waar het zit, en praten er samen over. Een chatbot gebruikt alleen de leerkracht; zelf leren ze in groepjes een computer iets herkennen. Daarna loopt de leerlijn verder in het secundair.</p><span class="ll-count"><b>2</b> AI-doelen uit Op.stap · 9 rode draden</span><div class="lnk lnk-map" data-step="map:leerlijn-4"></div></div></header>
+<div class="wrap" style="padding:16px 24px 64px">
+<h3>Waarom deze leerlijn</h3>
+<p class="note">Op.stap ICT (V1.3) heeft maar twee doelen over AI, allebei voor het 6e leerjaar: <span class="code">8.2.GL6.7</span> weten wat artificiële intelligentie is en het woord taalmodel kennen, en <span class="code">8.2.GL6.8</span> voorbeelden geven van toepassingen met AI. Al de rest in deze leerlijn kiest de scholengroep zelf. Ze sluit aan bij ICT-lessen die er al zijn: in de tabel heten die lessen <em>aanknopingspunt</em>, de twee echte AI-doelen staan er als <em>AI-doel</em>.</p>
+<div class="grid3 ai-princ">
+<div class="card"><h4>De mens blijft centraal</h4><p>De leerling denkt eerst zelf en blijft verantwoordelijk.</p></div>
+<div class="card"><h4>Meerwaarde</h4><p>AI alleen als het leren er beter van wordt.</p></div>
+<div class="card"><h4>Transparantie</h4><p>Eerlijk vermelden welk hulpmiddel je gebruikte.</p></div>
+<div class="card"><h4>Leeftijdsgeschikt</h4><p>Geen afbreuk aan lezen, schrijven, rekenen, redeneren en zelf formuleren.</p></div>
+</div>
+<h3>De negen rode draden in de 3e graad basis (5e en 6e leerjaar)</h3>
+<div class="scroll"><table class="plain ai-tab"><thead><tr><th scope="col">Rode draad</th><th scope="col">Doel (ik-vorm)</th><th scope="col">Op.stap</th><th scope="col">Zo komt AI aan bod</th></tr></thead><tbody><tr><th scope="row">1. AI begrijpen en herkennen</th><td>Ik weet waar AI zit in apps die ik ken, zoals een vertaalapp of een spraakassistent. Ik weet dat een chatbot geen mens is.</td><td><span class="ai-tag">AI-doel</span><span class="code">8.2.GL6.7</span><span class="code">8.2.GL6.8</span><br/><span class="ai-tag ank">Aanknopingspunt</span><span class="code">8.1.GL5.4</span><span class="code">8.1.GL5.5</span><span class="code">8.1.GL5.6</span><span class="code">8.1.GL6.4</span></td><td>Uitleggen dat AI een programma is dat leert uit heel veel voorbeelden. Vergelijken met een stappenplan dat de klas zelf maakt: daar bepaal jij de regels, bij AI leert de computer ze uit voorbeelden.</td></tr><tr><th scope="row">2. Veilig en verantwoord omgaan met AI</th><td>Ik zet mijn naam, adres, foto’s of gegevens van anderen niet in een app of chatbot. Ik weet dat wat ik intyp naar een computer ergens anders gaat.</td><td><span class="ai-tag ank">Aanknopingspunt</span><span class="code">8.3.GL5.4</span><span class="code">8.3.GL6.3</span><span class="code">8.3.GL5.2</span><span class="code">8.3.GL5.3</span><span class="code">8.1.GL6.2</span></td><td>Wat je in een app of chatbot typt, gaat naar een computer ergens anders. Daarom: geen naam, adres of foto’s, en nooit foto’s van klasgenoten laten aanpassen door AI.</td></tr><tr><th scope="row">3. Weten wanneer AI wel en niet mag</th><td>Ik gebruik AI op school alleen samen met mijn leerkracht.</td><td><span class="na">Geen aanknopingspunt in Op.stap</span></td><td>Klasafspraak: AI alleen samen met de leerkracht.</td></tr><tr><th scope="row">4. Effectief communiceren met AI</th><td>Ik help een duidelijke vraag bedenken, zoals bij zoeken op het internet.</td><td><span class="ai-tag ank">Aanknopingspunt</span><span class="code">8.2.GL5.5</span><span class="code">8.2.GL6.5</span></td><td>Samen een duidelijke vraag bedenken voor de leerkracht ze intypt. Zien dat een betere vraag een beter antwoord geeft, net zoals bij zoeken op het internet.</td></tr><tr><th scope="row">5. AI-output kritisch beoordelen</th><td>Ik weet dat AI fouten maakt en dingen kan verzinnen. Ik controleer een antwoord in mijn cursus of bij mijn leerkracht.</td><td><span class="ai-tag ank">Aanknopingspunt</span><span class="code">8.2.GL5.6</span><span class="code">8.2.GL6.6</span><span class="code">8.3.GL6.2</span></td><td>Een antwoord van AI nakijken zoals elke andere website: helpt het mij, weet ik waar het vandaan komt, en klopt het volgens het leerboek of een tweede bron?</td></tr><tr><th scope="row">6. Leren mét AI zonder het leren uit handen te geven</th><td>Ik probeer eerst zelf. Ik weet waarom ik zelf leer lezen, schrijven en rekenen.</td><td><span class="na">Geen aanknopingspunt in Op.stap</span></td><td>Eerst zelf proberen; samen bespreken waarom je zelf leert lezen, schrijven en rekenen.</td></tr><tr><th scope="row">7. Creëren, onderzoeken en problemen oplossen met AI</th><td>Ik leer samen met klasgenoten een computer iets herkennen en test of het lukt.</td><td><span class="ai-tag ank">Aanknopingspunt</span><span class="code">8.2.GL5.1</span><span class="code">8.1.GL5.1</span><span class="code">8.1.GL6.3</span></td><td>In groepjes zelf een computer iets leren herkennen en testen of het lukt. De leerkracht kan ook met de klas ideeën laten verzinnen door AI; de klas kiest en verbetert zelf.</td></tr><tr><th scope="row">8. Transparantie, auteurschap en bronnen</th><td>Ik zeg eerlijk welk hulpmiddel ik gebruikte. Wat een ander maakte, is niet zomaar van mij.</td><td><span class="ai-tag ank">Aanknopingspunt</span><span class="code">8.3.GL5.1</span><span class="code">8.3.GL6.1</span></td><td>Wat een ander maakte, ook een tekst of tekening van AI, is niet zomaar van jou. Je zegt eerlijk welk hulpmiddel je gebruikte.</td></tr><tr><th scope="row">9. Mens, maatschappij en toekomst</th><td>Ik weet dat AI oneerlijk kan beslissen als de voorbeelden eenzijdig zijn. Een mens heeft het laatste woord.</td><td><span class="ai-tag">AI-doel</span><span class="code">8.2.GL6.8</span><br/><span class="ai-tag ank">Aanknopingspunt</span><span class="code">8.3.GL6.4</span><span class="code">8.3.GL6.5</span><span class="code">8.3.GL6.6</span><span class="code">8.3.GL6.7</span><span class="code">8.3.GL6.8</span></td><td>Zien dat apps die video’s of spelletjes aanraden AI gebruiken om je zo lang mogelijk te laten kijken. Praten over nepfoto’s en over AI die niet eerlijk is voor iedereen.</td></tr></tbody></table></div>
+<h3>Wat een leerling op het einde van het 6e leerjaar kan</h3>
+<div class="ai-eind"><div><b>AI herkennen</b><p>Zeggen waar AI zit in apps en toestellen die je kent, zoals een spraakassistent, een vertaalapp of de video’s die een app je aanraadt. Weten dat AI een computerprogramma is dat leert uit heel veel voorbeelden.</p></div><div><b>Weten hoe een chatbot werkt</b><p>Een chatbot werkt met een taalmodel. Dat is geen mens: het weet niet of iets waar is, maar raadt welke woorden goed bij elkaar passen. Daarom kan een chatbot fouten maken en dingen verzinnen.</p></div><div><b>Zelf een computer iets leren herkennen</b><p>Met voorbeelden een computer leren om twee soorten afbeeldingen uit elkaar te houden, en zien dat hij fouten maakt als de voorbeelden niet goed gekozen zijn.</p></div><div><b>Controleren</b><p>Een antwoord van AI nakijken in het leerboek of op een betrouwbare website.</p></div><div><b>Veilig blijven</b><p>Je naam, adres, foto’s of gegevens van anderen nooit in een app of chatbot zetten, en weten bij wie je terechtkunt als er iets misloopt.</p></div><div><b>Eerlijk zijn</b><p>Zeggen wanneer je een hulpmiddel zoals een vertaalapp gebruikte. Wat een ander maakte, ook een computer, is niet zomaar van jou.</p></div><div><b>Zelf denken</b><p>Eerst zelf proberen, en begrijpen waarom je zelf moet leren lezen, schrijven en rekenen, ook al bestaat AI.</p></div><div><b>Nadenken over AI</b><p>In een klasgesprek vertellen wat AI goed kan en wat misloopt, bijvoorbeeld een nepfoto.</p></div></div>
+<h3>Leeractiviteit: zelf een computer iets leren herkennen</h3>
+<p class="note">Minstens één keer in de 3e graad ontdekken de leerlingen zelf hoe een computer leert. Dat kan met een lespakket of een eigen lessenreeks, zolang de zeven stappen aan bod komen.</p>
+<ol class="path"><li class="step"><div class="grade">1</div><div class="body"><p class="what"><b>Zelf het verschil zien</b> Zelf afbeeldingen in twee groepen verdelen en uitzoeken waaraan je het verschil ziet.</p><div class="meta"><span class="code">8.1.GL5.4</span><span class="code">8.1.GL5.5</span><span class="code">8.1.GL5.6</span><span class="md">Rode draad 1 · patronen herkennen</span></div></div></li><li class="step"><div class="grade">2</div><div class="body"><p class="what"><b>Regels maken</b> Een stappenplan met ja/nee-vragen maken en uittesten. Ontdekken dat vaste regels niet altijd werken bij nieuwe afbeeldingen.</p><div class="meta"><span class="code">8.1.GL5.4</span><span class="code">8.1.GL5.6</span><span class="code">8.1.GL5.1</span><span class="md">Rode draad 1, 5 · stappenplan met keuzes; hoe een computer informatie verwerkt</span></div></div></li><li class="step"><div class="grade">3</div><div class="body"><p class="what"><b>Voorbeelden sorteren</b> Bij elke afbeelding zeggen in welke groep ze hoort. Zo verzamel je de voorbeelden waaruit de computer leert.</p><div class="meta"><span class="md">Rode draad 1 · de woorden data en label</span></div></div></li><li class="step"><div class="grade">4</div><div class="body"><p class="what"><b>De computer laten leren</b> Met een eenvoudig programma de computer laten leren uit die voorbeelden, en een eerste keer testen.</p><div class="meta"><span class="code">8.2.GL5.1</span><span class="code">8.1.GL5.1</span><span class="md">Rode draad 1, 7 · een webcam gebruiken; hoe een computer informatie verwerkt</span></div></div></li><li class="step"><div class="grade">5</div><div class="body"><p class="what"><b>Testen hoe goed het werkt</b> De computer nieuwe afbeeldingen tonen. Aflezen hoe zeker hij is (een percentage) en afspreken vanaf hoeveel procent je hem gelooft.</p><div class="meta"><span class="code">8.2.GL5.6</span><span class="code">8.2.GL6.6</span><span class="md">Rode draad 5 · nagaan of iets betrouwbaar en juist is</span></div></div></li><li class="step"><div class="grade">6</div><div class="body"><p class="what"><b>Begrijpen waarom het misloopt</b> Uitleggen dat de computer fouten maakt of oneerlijk beslist als hij te weinig of te eenzijdige voorbeelden kreeg. Dat heet bias.</p><div class="meta"><span class="code">8.2.GL6.7</span><span class="md">Rode draad 1, 9 · voorbereiding op het AI-doel</span></div></div></li><li class="step"><div class="grade">7</div><div class="body"><p class="what"><b>Een mens beslist</b> Bespreken wat je doet als de computer twijfelt, en afspreken dat dan een mens beslist.</p><div class="meta"><span class="code">8.3.GL6.4</span><span class="md">Rode draad 3, 6, 9 · digitale media en wat eerlijk is</span></div></div></li></ol>
+<p class="tip"><strong>Het programma bij stap 4:</strong> kies een programma dat geen chatbot is, waarvoor je geen account nodig hebt en dat de beelden op de laptop zelf houdt. Afspraken: alleen kaarten of afbeeldingen voor de camera, nooit gezichten van leerlingen (portretrecht, 8.3.GL5.2), het project niet opslaan of delen, en het programma sluiten na de les.</p>
+<h3>Afspraken in de 3e graad basis</h3>
+<div class="scroll"><table class="plain"><tbody>
+<tr><th scope="row">Rol van de leerkracht</th><td>Gebruikt de chatbot zelf op het digitale bord en denkt hardop, helpt groepjes als ze een computer iets leren herkennen, en kijkt antwoorden samen met de klas na.</td></tr>
+<tr><th scope="row">Tool</th><td>Leerlingen gebruiken zelf geen chatbot: Copilot Chat met het schoolaccount mag volgens Microsoft pas vanaf 13 jaar. Gewone hulpmiddelen waarin AI zit, zoals een vertaalapp, een voorleesfunctie of inspreken in plaats van typen, mogen wel als de leerkracht erbij is.</td></tr>
+<tr><th scope="row">AI-label</th><td>Label 1 (verboden) bij eigen werk; AI alleen samen met de leerkracht in de klas.</td></tr>
+<tr><th scope="row">Opdrachten</th><td>Met de hele klas of in groepjes, deels zonder computer.</td></tr>
+<tr><th scope="row">Bewijs van eigen werk</th><td>Klasgesprek: “Wat deed jij zelf, wat deed het hulpmiddel?” Mondeling: “Ik gebruikte een vertaalapp om …”</td></tr>
+</tbody></table></div>
+<h3>Hoe het verder loopt in het secundair</h3>
+<div class="scroll"><table class="plain"><thead><tr><th scope="col"></th><th scope="col">Einde 6e leerjaar</th><th scope="col">Einde 1e graad secundair</th></tr></thead><tbody>
+<tr><th scope="row">Algemeen</th><td><b>Ik ontdek AI samen met mijn klas.</b></td><td><b>Ik gebruik AI onder begeleiding.</b></td></tr>
+<tr><th scope="row">Begrijpen</th><td>Ik herken AI rondom mij.</td><td>Ik weet wat AI ongeveer is.</td></tr>
+<tr><th scope="row">Wanneer mag het</th><td>Ik gebruik AI alleen met mijn leerkracht.</td><td>Ik volg het AI-label.</td></tr>
+<tr><th scope="row">Kritisch beoordelen</th><td>Ik weet dat AI fouten maakt en controleer.</td><td>Ik weet dat AI fouten maakt.</td></tr>
+<tr><th scope="row">Transparantie</th><td>Ik zeg eerlijk welk hulpmiddel ik gebruikte.</td><td>Ik zeg eerlijk dat ik AI gebruikte.</td></tr>
+</tbody></table></div>
+<p class="note">Bron: AI-leerlijn leerlingen en leerkrachten, Scholengroep Sint-Rembert, werkversie 26 oktober 2026. De koppeling volgt Op.stap ICT V1.3; bij een nieuwe versie worden de codes nagekeken.</p>
+</div>
+</section>
+<section class="perjaar" id="perjaar">
+<div class="wrap">
+<h2>Per leerjaar</h2>
+<p class="lead">Kies een leerjaar en zie in één oogopslag wat in de drie leerlijnen aan bod komt.</p>
+<p class="note">Jongste en 1ste kleuter hebben geen ICT-leerplandoelen en staan daarom niet in de lijst.</p><div aria-label="Kies een leerjaar" class="yr-tabs" role="tablist"><button aria-controls="yr-2de-kleuter" aria-selected="true" id="tab-2de-kleuter" role="tab" tabindex="0">2de kleuter<b>1</b></button><button aria-controls="yr-3de-kleuter" aria-selected="false" id="tab-3de-kleuter" role="tab" tabindex="-1">3de kleuter<b>5</b></button><button aria-controls="yr-1ste-leerjaar" aria-selected="false" id="tab-1ste-leerjaar" role="tab" tabindex="-1">1ste leerjaar<b>8</b></button><button aria-controls="yr-2de-leerjaar" aria-selected="false" id="tab-2de-leerjaar" role="tab" tabindex="-1">2de leerjaar<b>8</b></button><button aria-controls="yr-3de-leerjaar" aria-selected="false" id="tab-3de-leerjaar" role="tab" tabindex="-1">3de leerjaar<b>12</b></button><button aria-controls="yr-4de-leerjaar" aria-selected="false" id="tab-4de-leerjaar" role="tab" tabindex="-1">4de leerjaar<b>14</b></button><button aria-controls="yr-5de-leerjaar" aria-selected="false" id="tab-5de-leerjaar" role="tab" tabindex="-1">5de leerjaar<b>17</b></button><button aria-controls="yr-6de-leerjaar" aria-selected="false" id="tab-6de-leerjaar" role="tab" tabindex="-1">6de leerjaar<b>21</b></button></div><div aria-labelledby="tab-2de-kleuter" class="yr-panel" id="yr-2de-kleuter" role="tabpanel"><div class="yr-head"><h3>2de kleuter</h3><p><b>1</b> leerplandoelen dit jaar</p><div class="lnk lnk-map" data-step="map:2de-kleuter"></div></div><div class="yr-grid"><div><h4 class="yr-ll">Leerlijn 1 · Computationeel denken <span>1 doelen</span></h4><div class="yr-step"><span class="yr-sp">1B · Principes van computationeel denken</span><div class="what-row"><p class="what">Past onder begeleiding een eenvoudig stappenplan toe.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GK2.1" data-t="Past onder begeleiding een eenvoudig stappenplan toe." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GK2.1</span><span class="lvl lvl-verkennend">Verkennend</span></div><p class="klas"><span>Suggesties voor in de les</span>Pictokaarten om een jas aan te trekken; de Bee-Bot één stap laten zetten.</p><div class="lnk" data-step="2de-kleuter_8-1-GK2-1"></div></div><h4 class="yr-ll">Leerlijn 2 · Digitale informatieveiligheid <span>0 doelen</span></h4><p class="note">Geen leerplandoelen voor deze leerlijn in het 2de kleuter.</p><h4 class="yr-ll">Leerlijn 3 · Mediawijsheid <span>0 doelen</span></h4><p class="note">Geen leerplandoelen voor deze leerlijn in het 2de kleuter.</p><h4 class="yr-ll">Aanvullingen uit de Mediawijs-leerlijn <span>facultatief</span></h4><ul class="yr-extra"><li>Verkent voorbeelden van respectvol en respectloos gedrag online. <span class="code">8.3.GL6.4</span></li><li>Verkent op basis van voorbeelden het belang van evenwichtig mediagebruik. <span class="code">8.3.GL6.7</span></li><li>Zegt met welke media hij of zij zich amuseert. <span class="code">8.3.GL6.5</span></li></ul></div></div></div><div aria-labelledby="tab-3de-kleuter" class="yr-panel" hidden="" id="yr-3de-kleuter" role="tabpanel"><div class="yr-head"><h3>3de kleuter</h3><p><b>5</b> leerplandoelen dit jaar</p><div class="lnk lnk-map" data-step="map:3de-kleuter"></div></div><div class="yr-grid"><div><h4 class="yr-ll">Leerlijn 1 · Computationeel denken <span>2 doelen</span></h4><div class="yr-step"><span class="yr-sp">1B · Principes van computationeel denken</span><div class="what-row"><p class="what">Stelt onder begeleiding een stappenplan op, past het toe en controleert het; herkent patronen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GK3.1, 8.1.GK3.2" data-t="Stelt onder begeleiding een stappenplan op, past het toe en controleert het; herkent patronen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GK3.1</span><span class="code">8.1.GK3.2</span><span class="lvl lvl-verkennend">Verkennend</span></div><p class="klas"><span>Suggesties voor in de les</span>Een route uitleggen met pijlkaarten en daarna met de Bee-Bot testen; een kralenketting volgens een patroon.</p><div class="lnk" data-step="3de-kleuter_8-1-GK3-1"></div></div><h4 class="yr-ll">Leerlijn 2 · Digitale informatieveiligheid <span>3 doelen</span></h4><div class="yr-step"><span class="yr-sp">2A · Digitale geletterdheid</span><div class="what-row"><p class="what">Gebruikt enkele knoppen (aan/uit, volume, start, terug); swipet, opent en sluit apps.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GK3.1, 8.2.GK3.2" data-t="Gebruikt enkele knoppen (aan/uit, volume, start, terug); swipet, opent en sluit apps." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GK3.1</span><span class="code">8.2.GK3.2</span><span class="lvl lvl-verkennend">Verkennend</span></div><p class="klas"><span>Suggesties voor in de les</span>Een boekjes-app openen en door de pagina's swipen.</p><div class="lnk" data-step="3de-kleuter_8-2-GK3-1"></div></div><div class="yr-step"><span class="yr-sp">2B · Informatiegeletterdheid</span><div class="what-row"><p class="what">Navigeert en zoekt in een afgebakende app.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GK3.3" data-t="Navigeert en zoekt in een afgebakende app." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GK3.3</span><span class="lvl lvl-verkennend">Verkennend</span></div><p class="klas"><span>Suggesties voor in de les</span>Een boekje kiezen om te laten voorlezen.</p><div class="lnk" data-step="3de-kleuter_8-2-GK3-3"></div></div><h4 class="yr-ll">Leerlijn 3 · Mediawijsheid <span>0 doelen</span></h4><p class="note">Geen leerplandoelen voor deze leerlijn in het 3de kleuter.</p><h4 class="yr-ll">Aanvullingen uit de Mediawijs-leerlijn <span>facultatief</span></h4><ul class="yr-extra"><li>Verkent voorbeelden van respectvol en respectloos gedrag online. <span class="code">8.3.GL6.4</span></li><li>Verkent op basis van voorbeelden het belang van evenwichtig mediagebruik. <span class="code">8.3.GL6.7</span></li><li>Zegt met welke media hij of zij zich amuseert. <span class="code">8.3.GL6.5</span></li></ul></div></div></div><div aria-labelledby="tab-1ste-leerjaar" class="yr-panel" hidden="" id="yr-1ste-leerjaar" role="tabpanel"><div class="yr-head"><h3>1ste leerjaar</h3><p><b>8</b> leerplandoelen dit jaar</p><div class="lnk lnk-map" data-step="map:1ste-leerjaar"></div></div><div class="yr-grid"><div><h4 class="yr-ll">Leerlijn 1 · Computationeel denken <span>4 doelen</span></h4><div class="yr-step"><span class="yr-sp">1A · Inzicht in digitale systemen</span><div class="what-row"><p class="what">Gebruikt de begrippen digitaal en het internet; onderscheidt analoog en digitaal.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL1.1" data-t="Gebruikt de begrippen digitaal en het internet; onderscheidt analoog en digitaal." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL1.1</span><span class="lvl lvl-verkennend">Verkennend</span></div><p class="klas"><span>Suggesties voor in de les</span>Een tekening met kleurpotloden naast een tekening in een app; videobellen met familie in het buitenland.</p><div class="lnk" data-step="1ste-leerjaar_8-1-GL1-1"></div></div><div class="yr-step"><span class="yr-sp">1B · Principes van computationeel denken</span><div class="what-row"><p class="what">Ontwerpt, test en debugt onder begeleiding een lineair algoritme met abstractie, patroonherkenning en sequentie.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL1.2, 8.1.GL1.3, 8.1.GL1.4" data-t="Ontwerpt, test en debugt onder begeleiding een lineair algoritme met abstractie, patroonherkenning en sequentie." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL1.2</span><span class="code">8.1.GL1.3</span><span class="code">8.1.GL1.4</span><span class="lvl lvl-verkennend">Verkennend</span></div><p class="klas"><span>Suggesties voor in de les</span>Veters strikken als algoritme; klap-klap-stop; bij het lezen alleen op de letters letten.</p><div class="lnk" data-step="1ste-leerjaar_8-1-GL1-2"></div></div><h4 class="yr-ll">Leerlijn 2 · Digitale informatieveiligheid <span>3 doelen</span></h4><div class="yr-step"><span class="yr-sp">2A · Digitale geletterdheid</span><div class="what-row"><p class="what">Start een laptop op en opent het startmenu; muisvaardigheden, vensters, schuifbalken, in- en uitzoomen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL1.1, 8.2.GL1.2" data-t="Start een laptop op en opent het startmenu; muisvaardigheden, vensters, schuifbalken, in- en uitzoomen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL1.1</span><span class="code">8.2.GL1.2</span><span class="lvl lvl-verkennend">Verkennend</span></div><p class="klas"><span>Suggesties voor in de les</span>Een educatief spelletje selecteren en starten.</p><div class="lnk" data-step="1ste-leerjaar_8-2-GL1-1"></div></div><div class="yr-step"><span class="yr-sp">2B · Informatiegeletterdheid</span><div class="what-row"><p class="what">Navigeert in een afgebakende toepassing.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL1.3" data-t="Navigeert in een afgebakende toepassing." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL1.3</span><span class="lvl lvl-verkennend">Verkennend</span></div><p class="klas"><span>Suggesties voor in de les</span>In een digitaal leesboek naar het volgende hoofdstuk gaan.</p><div class="lnk" data-step="1ste-leerjaar_8-2-GL1-3"></div></div><h4 class="yr-ll">Leerlijn 3 · Mediawijsheid <span>1 doelen</span></h4><div class="yr-step"><span class="yr-sp">3A · Digitale veiligheid</span><div class="what-row"><p class="what">Kent het begrip account: gebruikersnaam, wachtwoord, je digitale identiteit in een app.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL1.1" data-t="Kent het begrip account: gebruikersnaam, wachtwoord, je digitale identiteit in een app." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.3.GL1.1</span><span class="lvl lvl-verkennend">Verkennend</span><span class="md">Mediawijs: interageren</span></div><p class="klas"><span>Suggesties voor in de les</span>Samen inloggen op het leerplatform; wat weet de app over mij?</p><div class="lnk" data-step="1ste-leerjaar_8-3-GL1-1"></div></div><h4 class="yr-ll">Aanvullingen uit de Mediawijs-leerlijn <span>facultatief</span></h4><ul class="yr-extra"><li>Verkent kansen en valkuilen van de online wereld en hoe je die signaleert. <span class="code">8.3.GL5.4</span></li><li>Herkent voorbeelden van effecten van media op de eigen gezondheid. <span class="code">8.3.GL6.7</span></li><li>Verkent wat echt en wat verzonnen is. <span class="code">8.2.GL4.6</span></li></ul></div></div></div><div aria-labelledby="tab-2de-leerjaar" class="yr-panel" hidden="" id="yr-2de-leerjaar" role="tabpanel"><div class="yr-head"><h3>2de leerjaar</h3><p><b>8</b> leerplandoelen dit jaar</p><div class="lnk lnk-map" data-step="map:2de-leerjaar"></div></div><div class="yr-grid"><div><h4 class="yr-ll">Leerlijn 1 · Computationeel denken <span>5 doelen</span></h4><div class="yr-step"><span class="yr-sp">1A · Inzicht in digitale systemen</span><div class="what-row"><p class="what">Gebruikt de begrippen hardware en software en weet dat hardware niet werkt zonder software.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL2.1" data-t="Gebruikt de begrippen hardware en software en weet dat hardware niet werkt zonder software." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL2.1</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Klasspeurtocht: hardware aanraken, software (apps, Bingel, Paint) aanwijzen.</p><div class="lnk" data-step="2de-leerjaar_8-1-GL2-1"></div></div><div class="yr-step"><span class="yr-sp">1B · Principes van computationeel denken</span><div class="what-row"><p class="what">Voegt decompositie toe aan de vier principes.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL2.2, 8.1.GL2.3, 8.1.GL2.4, 8.1.GL2.5" data-t="Voegt decompositie toe aan de vier principes." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL2.2</span><span class="code">8.1.GL2.3</span><span class="code">8.1.GL2.4</span><span class="code">8.1.GL2.5</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>De leerkracht voert de instructies voor een boterham met choco letterlijk uit en de klas debugt; dieren sorteren op aantal poten.</p><div class="lnk" data-step="2de-leerjaar_8-1-GL2-2"></div></div><h4 class="yr-ll">Leerlijn 2 · Digitale informatieveiligheid <span>2 doelen</span></h4><div class="yr-step"><span class="yr-sp">2A · Digitale geletterdheid</span><div class="what-row"><p class="what">Basisgebruik van toetsenbord en muis of touchpad.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL2.1" data-t="Basisgebruik van toetsenbord en muis of touchpad." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL2.1</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Voor- en familienaam typen met de spatiebalk ertussen.</p><div class="lnk" data-step="2de-leerjaar_8-2-GL2-1"></div></div><div class="yr-step"><span class="yr-sp">2B · Informatiegeletterdheid</span><div class="what-row"><p class="what">Navigeert in de leeromgeving tussen tabbladen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL2.2" data-t="Navigeert in de leeromgeving tussen tabbladen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL2.2</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>De oefening vinden die de juf of meester klaarzette.</p><div class="lnk" data-step="2de-leerjaar_8-2-GL2-2"></div></div><h4 class="yr-ll">Leerlijn 3 · Mediawijsheid <span>1 doelen</span></h4><div class="yr-step"><span class="yr-sp">3A · Digitale veiligheid</span><div class="what-row"><p class="what">Gaat veilig om met account en wachtwoord: een sterk wachtwoord kiezen en het niet doorgeven.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL2.1" data-t="Gaat veilig om met account en wachtwoord: een sterk wachtwoord kiezen en het niet doorgeven." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.3.GL2.1</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: verweren</span></div><p class="klas"><span>Suggesties voor in de les</span>‘Je wachtwoord is als je tandenborstel’: niet uitlenen.</p><div class="lnk" data-step="2de-leerjaar_8-3-GL2-1"></div></div><h4 class="yr-ll">Aanvullingen uit de Mediawijs-leerlijn <span>facultatief</span></h4><ul class="yr-extra"><li>Verkent kansen en valkuilen van de online wereld en hoe je die signaleert. <span class="code">8.3.GL5.4</span></li><li>Herkent voorbeelden van effecten van media op de eigen gezondheid. <span class="code">8.3.GL6.7</span></li><li>Verkent wat echt en wat verzonnen is. <span class="code">8.2.GL4.6</span></li></ul></div></div></div><div aria-labelledby="tab-3de-leerjaar" class="yr-panel" hidden="" id="yr-3de-leerjaar" role="tabpanel"><div class="yr-head"><h3>3de leerjaar</h3><p><b>12</b> leerplandoelen dit jaar</p><div class="lnk lnk-map" data-step="map:3de-leerjaar"></div></div><div class="yr-grid"><div><h4 class="yr-ll">Leerlijn 1 · Computationeel denken <span>5 doelen</span></h4><div class="yr-step"><span class="yr-sp">1A · Inzicht in digitale systemen</span><div class="what-row"><p class="what">Gebruikt de begrippen invoer, verwerking, uitvoer en opslag.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL3.1" data-t="Gebruikt de begrippen invoer, verwerking, uitvoer en opslag." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL3.1</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Sinterklaaslijstje typen en afdrukken; elk onderdeel krijgt een label.</p><div class="lnk" data-step="3de-leerjaar_8-1-GL3-1"></div></div><div class="yr-step"><span class="yr-sp">1B · Principes van computationeel denken</span><div class="what-row"><p class="what">Past de vier principes toe op complexere taken.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL3.2, 8.1.GL3.3, 8.1.GL3.4, 8.1.GL3.5" data-t="Past de vier principes toe op complexere taken." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL3.2</span><span class="code">8.1.GL3.3</span><span class="code">8.1.GL3.4</span><span class="code">8.1.GL3.5</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Een algoritme schrijven waarmee een klasgenoot een Lego-figuur bouwt; getallenpatronen; een cake bakken in deelstappen.</p><div class="lnk" data-step="3de-leerjaar_8-1-GL3-2"></div></div><h4 class="yr-ll">Leerlijn 2 · Digitale informatieveiligheid <span>6 doelen</span></h4><div class="yr-step"><span class="yr-sp">2A · Digitale geletterdheid</span><div class="what-row"><p class="what">Kent het begrip bestand; typt hoofdletters met Shift; opent en sluit bestanden via de mappenstructuur.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL3.1, 8.2.GL3.2, 8.2.GL3.3" data-t="Kent het begrip bestand; typt hoofdletters met Shift; opent en sluit bestanden via de mappenstructuur." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL3.1</span><span class="code">8.2.GL3.2</span><span class="code">8.2.GL3.3</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Een taak openen via Documenten &gt; Klas 3; een afbeelding verslepen op het digitale bord.</p><div class="lnk" data-step="3de-leerjaar_8-2-GL3-1"></div></div><div class="yr-step"><span class="yr-sp">2B · Informatiegeletterdheid</span><div class="what-row"><p class="what">Kiest een zoektool, formuleert een zoekopdracht en werkt onder begeleiding een zoekstrategie uit.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL3.5, 8.2.GL3.6, 8.2.GL3.7" data-t="Kiest een zoektool, formuleert een zoekopdracht en werkt onder begeleiding een zoekstrategie uit." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL3.5</span><span class="code">8.2.GL3.6</span><span class="code">8.2.GL3.7</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Zoekvragen koppelen aan de juiste tool: zoekmachine, Wikipedia, routeplanner, woordenboek.</p><div class="lnk" data-step="3de-leerjaar_8-2-GL3-5"></div></div><h4 class="yr-ll">Leerlijn 3 · Mediawijsheid <span>1 doelen</span></h4><div class="yr-step"><span class="yr-sp">3A · Digitale veiligheid</span><div class="what-row"><p class="what">Kent het begrip persoonlijke gegevens (naam, adres, telefoonnummer, geboortedatum, schoolaccount).</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL3.1" data-t="Kent het begrip persoonlijke gegevens (naam, adres, telefoonnummer, geboortedatum, schoolaccount)." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.3.GL3.1</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: verweren</span></div><p class="klas"><span>Suggesties voor in de les</span>Sorteerspel: wat mag je delen, wat niet?</p><div class="lnk" data-step="3de-leerjaar_8-3-GL3-1"></div></div><h4 class="yr-ll">Aanvullingen uit de Mediawijs-leerlijn <span>facultatief</span></h4><ul class="yr-extra"><li>Verkent een aantal basisregels van auteurs- en portretrecht. <span class="code">8.3.GL5.1 – 8.3.GL5.3</span></li></ul></div></div></div><div aria-labelledby="tab-4de-leerjaar" class="yr-panel" hidden="" id="yr-4de-leerjaar" role="tabpanel"><div class="yr-head"><h3>4de leerjaar</h3><p><b>14</b> leerplandoelen dit jaar</p><div class="lnk lnk-map" data-step="map:4de-leerjaar"></div></div><div class="yr-grid"><div><h4 class="yr-ll">Leerlijn 1 · Computationeel denken <span>6 doelen</span></h4><div class="yr-step"><span class="yr-sp">1A · Inzicht in digitale systemen</span><div class="what-row"><p class="what">Gebruikt de begrippen verzenden, ontvangen, offline en online.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL4.1" data-t="Gebruikt de begrippen verzenden, ontvangen, offline en online." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL4.1</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Rollenspel van een zoekvraag naar Google en terug; een afbeelding opslaan maakt ze offline.</p><div class="lnk" data-step="4de-leerjaar_8-1-GL4-1"></div></div><div class="yr-step"><span class="yr-sp">1B · Principes van computationeel denken</span><div class="what-row"><p class="what">Kent het begrip algoritme en gebruikt de principes in schoolse taken.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL4.2, 8.1.GL4.3, 8.1.GL4.4, 8.1.GL4.5, 8.1.GL4.6" data-t="Kent het begrip algoritme en gebruikt de principes in schoolse taken." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL4.2</span><span class="code">8.1.GL4.3</span><span class="code">8.1.GL4.4</span><span class="code">8.1.GL4.5</span><span class="code">8.1.GL4.6</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Algoritme voor ×50; een spellingsregel als patroon; een spreekbeurt opsplitsen; een samenvatting als abstractie.</p><div class="lnk" data-step="4de-leerjaar_8-1-GL4-2"></div></div><h4 class="yr-ll">Leerlijn 2 · Digitale informatieveiligheid <span>7 doelen</span></h4><div class="yr-step"><span class="yr-sp">2A · Digitale geletterdheid</span><div class="what-row"><p class="what">Combineert muis, toetsenbord en printer in één taak; opent bestanden met bijhorende media via mappen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL4.1, 8.2.GL4.2" data-t="Combineert muis, toetsenbord en printer in één taak; opent bestanden met bijhorende media via mappen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL4.1</span><span class="code">8.2.GL4.2</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Een digitale spellingsoefening invullen en afdrukken.</p><div class="lnk" data-step="4de-leerjaar_8-2-GL4-1"></div></div><div class="yr-step"><span class="yr-sp">2B · Informatiegeletterdheid</span><div class="what-row"><p class="what">Formuleert eerst een zoekvraag (wat wil ik weten?), dan een zoekopdracht; kiest een zoektool; beoordeelt zoekresultaten; past computationeel denken toe.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL4.3, 8.2.GL4.4, 8.2.GL4.5, 8.2.GL4.6, 8.2.GL4.7" data-t="Formuleert eerst een zoekvraag (wat wil ik weten?), dan een zoekopdracht; kiest een zoektool; beoordeelt zoekresultaten; past computationeel denken toe." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL4.3</span><span class="code">8.2.GL4.4</span><span class="code">8.2.GL4.5</span><span class="code">8.2.GL4.6</span><span class="code">8.2.GL4.7</span><span class="lvl lvl-beginnend">Beginnend</span></div><p class="klas"><span>Suggesties voor in de les</span>Zoekvraag ‘Welke planeten zijn er?’; zoeken op ‘katachtigen’ in plaats van elk dier apart (abstractie).</p><div class="lnk" data-step="4de-leerjaar_8-2-GL4-3"></div></div><h4 class="yr-ll">Leerlijn 3 · Mediawijsheid <span>1 doelen</span></h4><div class="yr-step"><span class="yr-sp">3A · Digitale veiligheid</span><div class="what-row"><p class="what">Kent het begrip online privacy: zelf kiezen wat je deelt en met wie.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL4.1" data-t="Kent het begrip online privacy: zelf kiezen wat je deelt en met wie." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.3.GL4.1</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: verweren</span></div><p class="klas"><span>Suggesties voor in de les</span>Een veilige schuilnaam voor een spelletje bedenken.</p><div class="lnk" data-step="4de-leerjaar_8-3-GL4-1"></div></div><h4 class="yr-ll">Aanvullingen uit de Mediawijs-leerlijn <span>facultatief</span></h4><ul class="yr-extra"><li>Verkent een aantal basisregels van auteurs- en portretrecht. <span class="code">8.3.GL5.1 – 8.3.GL5.3</span></li></ul></div></div></div><div aria-labelledby="tab-5de-leerjaar" class="yr-panel" hidden="" id="yr-5de-leerjaar" role="tabpanel"><div class="yr-head"><h3>5de leerjaar</h3><p><b>17</b> leerplandoelen dit jaar</p><div class="lnk lnk-map" data-step="map:5de-leerjaar"></div></div><div class="yr-grid"><div><h4 class="yr-ll">Leerlijn 1 · Computationeel denken <span>6 doelen</span></h4><div class="yr-step"><span class="yr-sp">1A · Inzicht in digitale systemen</span><div class="what-row"><p class="what">Kent de samenhang tussen invoer, verwerking, uitvoer en opslag; begrijpt hoe systemen verbonden zijn (kabel, wifi, mobiel internet); kent het begrip verbinding.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL5.1, 8.1.GL5.2, 8.1.GL5.3" data-t="Kent de samenhang tussen invoer, verwerking, uitvoer en opslag; begrijpt hoe systemen verbonden zijn (kabel, wifi, mobiel internet); kent het begrip verbinding." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL5.1</span><span class="code">8.1.GL5.2</span><span class="code">8.1.GL5.3</span><span class="lvl lvl-gevorderd">Gevorderd</span></div><p class="klas"><span>Suggesties voor in de les</span>Een presentatie maken en elke handeling benoemen; de wifi-punten van de school in kaart brengen.</p><div class="lnk" data-step="5de-leerjaar_8-1-GL5-1"></div></div><div class="yr-step"><span class="yr-sp">1B · Principes van computationeel denken</span><div class="what-row"><p class="what">Ontwerpt, test en debugt algoritmes met keuze (als … dan), herhaling en een combinatie ervan.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL5.4, 8.1.GL5.5, 8.1.GL5.6" data-t="Ontwerpt, test en debugt algoritmes met keuze (als … dan), herhaling en een combinatie ervan." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL5.4</span><span class="code">8.1.GL5.5</span><span class="code">8.1.GL5.6</span><span class="lvl lvl-gevorderd">Gevorderd</span></div><p class="klas"><span>Suggesties voor in de les</span>Groen kaartje = rechtstaan; een tafel van 1 tot 10 met herhaling; een route rond een obstakel, eerst op de speelplaats en dan in Scratch.</p><div class="lnk" data-step="5de-leerjaar_8-1-GL5-4"></div></div><h4 class="yr-ll">Leerlijn 2 · Digitale informatieveiligheid <span>6 doelen</span></h4><div class="yr-step"><span class="yr-sp">2A · Digitale geletterdheid</span><div class="what-row"><p class="what">Typt vlot (AltGr voor € en @); bedient een beamer; opent, bewaart en sluit bestanden; beheert bestanden (juiste map, duidelijke naam, verwijderen, kopiëren, verplaatsen); zet wifi aan en uit.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL5.1, 8.2.GL5.2, 8.2.GL5.3, 8.2.GL5.4" data-t="Typt vlot (AltGr voor € en @); bedient een beamer; opent, bewaart en sluit bestanden; beheert bestanden (juiste map, duidelijke naam, verwijderen, kopiëren, verplaatsen); zet wifi aan en uit." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL5.1</span><span class="code">8.2.GL5.2</span><span class="code">8.2.GL5.3</span><span class="code">8.2.GL5.4</span><span class="lvl lvl-gevorderd">Gevorderd</span></div><p class="klas"><span>Suggesties voor in de les</span>De eigen presentatie bewaren als ‘2026-11-spreekbeurt-naam’ in de klasmap en zelf projecteren.</p><div class="lnk" data-step="5de-leerjaar_8-2-GL5-1"></div></div><div class="yr-step"><span class="yr-sp">2B · Informatiegeletterdheid</span><div class="what-row"><p class="what">Werkt zelf een zoekstrategie uit en stuurt bij; beoordeelt bronnen op bruikbaarheid met aangereikte criteria.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL5.5, 8.2.GL5.6" data-t="Werkt zelf een zoekstrategie uit en stuurt bij; beoordeelt bronnen op bruikbaarheid met aangereikte criteria." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL5.5</span><span class="code">8.2.GL5.6</span><span class="lvl lvl-gevorderd">Gevorderd</span></div><p class="klas"><span>Suggesties voor in de les</span>De zoekopdracht ‘oude Rome’ opsplitsen in Rome, Pompeï en Carthago (decompositie).</p><div class="lnk" data-step="5de-leerjaar_8-2-GL5-5"></div></div><h4 class="yr-ll">Leerlijn 3 · Mediawijsheid <span>5 doelen</span></h4><div class="yr-step"><span class="yr-sp">3A · Digitale veiligheid</span><div class="what-row"><p class="what">Kent mogelijkheden om zichzelf en anderen online te beschermen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL5.4" data-t="Kent mogelijkheden om zichzelf en anderen online te beschermen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.3.GL5.4</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: verweren</span></div><p class="klas"><span>Suggesties voor in de les</span>Een sterk wachtwoord maken; weten bij wie je terechtkunt (Awel 102, Child Focus 116 000).</p><div class="lnk" data-step="5de-leerjaar_8-3-GL5-4"></div></div><div class="yr-step"><span class="yr-sp">3B · Auteurs- en portretrecht</span><div class="what-row"><p class="what">Kent de basis van auteursrecht (wat iemand maakt, mag je niet zomaar gebruiken) en portretrecht (niet filmen, fotograferen of delen zonder toestemming).</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL5.1, 8.3.GL5.2, 8.3.GL5.3" data-t="Kent de basis van auteursrecht (wat iemand maakt, mag je niet zomaar gebruiken) en portretrecht (niet filmen, fotograferen of delen zonder toestemming)." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.3.GL5.1</span><span class="code">8.3.GL5.2</span><span class="code">8.3.GL5.3</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: creëren, interageren</span></div><p class="klas"><span>Suggesties voor in de les</span>Mag deze afbeelding uit een zoekmachine in mijn presentatie? Klasfoto op de schoolwebsite: wie geeft toestemming?</p><div class="lnk" data-step="5de-leerjaar_8-3-GL5-1"></div></div><div class="yr-step"><span class="yr-sp">3C · Communiceren</span><div class="what-row"><p class="what">Kent mogelijkheden van digitale tools om te communiceren: berichten, e-mail, chat.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.4.GL5.1" data-t="Kent mogelijkheden van digitale tools om te communiceren: berichten, e-mail, chat." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.4.GL5.1</span><span class="lvl lvl-beginnend">Beginnend</span><span class="md">Mediawijs: interageren</span></div><p class="klas"><span>Suggesties voor in de les</span>Een e-mail naar de leerkracht sturen met onderwerp en aanspreking.</p><div class="lnk" data-step="5de-leerjaar_8-4-GL5-1"></div></div></div></div><div class="ai-yr"><h4>AI-leerlijn (schooleigen)</h4><p>In het 5e leerjaar ontdekken de leerlingen waar AI zit en hoe een computer leert uit voorbeelden. Sluit aan bij de stappenplannen met keuze en herhaling (8.1.GL5.4 tot GL5.6), bronnen beoordelen (8.2.GL5.6) en online veiligheid (8.3.GL5.4). De leeractiviteit ‘zelf een computer iets leren herkennen’ kan in het 5e of 6e leerjaar.</p><a href="#ll4">Naar de AI-leerlijn</a></div></div><div aria-labelledby="tab-6de-leerjaar" class="yr-panel" hidden="" id="yr-6de-leerjaar" role="tabpanel"><div class="yr-head"><h3>6de leerjaar</h3><p><b>21</b> leerplandoelen dit jaar</p><div class="lnk lnk-map" data-step="map:6de-leerjaar"></div></div><div class="yr-grid"><div><h4 class="yr-ll">Leerlijn 1 · Computationeel denken <span>4 doelen</span></h4><div class="yr-step"><span class="yr-sp">1A · Inzicht in digitale systemen</span><div class="what-row"><p class="what">Begrijpt gegevensuitwisseling tussen systemen en verwerking en opslag in de cloud; kent de begrippen informatieverwerking en netwerk.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL6.1, 8.1.GL6.2, 8.1.GL6.3" data-t="Begrijpt gegevensuitwisseling tussen systemen en verwerking en opslag in de cloud; kent de begrippen informatieverwerking en netwerk." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL6.1</span><span class="code">8.1.GL6.2</span><span class="code">8.1.GL6.3</span><span class="lvl lvl-gevorderd">Gevorderd</span></div><p class="klas"><span>Suggesties voor in de les</span>Een Bingel-oefening volgen: welke gegevens gaan naar de server en welke feedback komt terug; slimme speaker; online gamen in realtime.</p><div class="lnk" data-step="6de-leerjaar_8-1-GL6-1"></div></div><div class="yr-step"><span class="yr-sp">1B · Principes van computationeel denken</span><div class="what-row"><p class="what">Combineert sequentie, herhaling en keuze in een zelf ontworpen algoritme en debugt het.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.1.GL6.4" data-t="Combineert sequentie, herhaling en keuze in een zelf ontworpen algoritme en debugt het." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.1.GL6.4</span><span class="lvl lvl-gevorderd">Gevorderd (expert als uitdaging)</span></div><p class="klas"><span>Suggesties voor in de les</span>Stoelendans als algoritme uitschrijven en daarna programmeren; sterke leerlingen begeleiden een groepje.</p><div class="lnk" data-step="6de-leerjaar_8-1-GL6-4"></div></div><h4 class="yr-ll">Leerlijn 2 · Digitale informatieveiligheid <span>8 doelen</span></h4><div class="yr-step"><span class="yr-sp">2A · Digitale geletterdheid</span><div class="what-row"><p class="what">Gebruikt Tab en sneltoetsen (Ctrl, Shift, Alt, Windows-toets); downloadt en uploadt; maakt en hernoemt mappen en haalt verwijderde bestanden terug; past taal- en weergave-instellingen aan.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL6.1, 8.2.GL6.2, 8.2.GL6.3, 8.2.GL6.4" data-t="Gebruikt Tab en sneltoetsen (Ctrl, Shift, Alt, Windows-toets); downloadt en uploadt; maakt en hernoemt mappen en haalt verwijderde bestanden terug; past taal- en weergave-instellingen aan." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL6.1</span><span class="code">8.2.GL6.2</span><span class="code">8.2.GL6.3</span><span class="code">8.2.GL6.4</span><span class="lvl lvl-gevorderd">Gevorderd</span></div><p class="klas"><span>Suggesties voor in de les</span>Een online formulier invullen met Tab; een bestand uploaden naar het leerplatform.</p><div class="lnk" data-step="6de-leerjaar_8-2-GL6-1"></div></div><div class="yr-step"><span class="yr-sp">2B · Informatiegeletterdheid</span><div class="what-row"><p class="what">Zoekt met alle vier de principes; beoordeelt bronnen op bruikbaarheid, betrouwbaarheid en correctheid; kent AI en het begrip taalmodel en geeft toepassingen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.2.GL6.5, 8.2.GL6.6, 8.2.GL6.7, 8.2.GL6.8" data-t="Zoekt met alle vier de principes; beoordeelt bronnen op bruikbaarheid, betrouwbaarheid en correctheid; kent AI en het begrip taalmodel en geeft toepassingen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.2.GL6.5</span><span class="code">8.2.GL6.6</span><span class="code">8.2.GL6.7</span><span class="code">8.2.GL6.8</span><span class="lvl lvl-gevorderd">Gevorderd</span></div><p class="klas"><span>Suggesties voor in de les</span>Een klasuitstap naar het Gravensteen voorbereiden; twee websites vergelijken (auteur, datum, bronnen); spraakherkenning, vertaaltools en aanbevelingen herkennen.</p><div class="lnk" data-step="6de-leerjaar_8-2-GL6-5"></div></div><h4 class="yr-ll">Leerlijn 3 · Mediawijsheid <span>9 doelen</span></h4><div class="yr-step"><span class="yr-sp">3A · Digitale veiligheid</span><div class="what-row"><p class="what">Kent de begrippen online veiligheid en nepnieuws (privacy-instellingen, grenzen stellen, netiquette) en beschermt zichzelf en anderen.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL6.2, 8.3.GL6.3" data-t="Kent de begrippen online veiligheid en nepnieuws (privacy-instellingen, grenzen stellen, netiquette) en beschermt zichzelf en anderen." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.3.GL6.2</span><span class="code">8.3.GL6.3</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: verweren, informeren</span></div><p class="klas"><span>Suggesties voor in de les</span>Een nepbericht ontmaskeren; samen afspraken voor de klaschat opstellen.</p><div class="lnk" data-step="6de-leerjaar_8-3-GL6-2"></div></div><div class="yr-step"><span class="yr-sp">3A · Digitale veiligheid</span><div class="what-row"><p class="what">Illustreert de impact van digitale media op de eigen leefwereld: ethisch, sociaal, regelgevend, gezondheid en veiligheid.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL6.4, 8.3.GL6.5, 8.3.GL6.6, 8.3.GL6.7, 8.3.GL6.8" data-t="Illustreert de impact van digitale media op de eigen leefwereld: ethisch, sociaal, regelgevend, gezondheid en veiligheid." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.3.GL6.4</span><span class="code">8.3.GL6.5</span><span class="code">8.3.GL6.6</span><span class="code">8.3.GL6.7</span><span class="code">8.3.GL6.8</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: verweren, amuseren</span></div><p class="klas"><span>Suggesties voor in de les</span>Screenshots van uitsluiting bespreken; influencers en reclame herkennen; cookiemeldingen; eigen schermtijd bijhouden. Lesmateriaal: De Schaal van M.</p><div class="lnk" data-step="6de-leerjaar_8-3-GL6-4"></div></div><div class="yr-step"><span class="yr-sp">3B · Auteurs- en portretrecht</span><div class="what-row"><p class="what">Kent de begrippen auteursrecht en portretrecht.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.3.GL6.1" data-t="Kent de begrippen auteursrecht en portretrecht." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.3.GL6.1</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: creëren, informeren</span></div><p class="klas"><span>Suggesties voor in de les</span>Een bronvermelding toevoegen aan de eigen presentatie; rechtenvrije beeldbanken gebruiken.</p><div class="lnk" data-step="6de-leerjaar_8-3-GL6-1"></div></div><div class="yr-step"><span class="yr-sp">3C · Communiceren</span><div class="what-row"><p class="what">Kent ook reacties en videogesprekken; onderscheidt realtime, synchroon en asynchroon.</p><button aria-label="Suggestie bij dit leerdoel" class="sug" data-code="8.4.GL6.1" data-t="Kent ook reacties en videogesprekken; onderscheidt realtime, synchroon en asynchroon." title="Suggestie bij dit leerdoel mailen" type="button">✎ Suggestie</button></div><div class="meta"><span class="code">8.4.GL6.1</span><span class="lvl lvl-gevorderd">Gevorderd</span><span class="md">Mediawijs: interageren</span></div><p class="klas"><span>Suggesties voor in de les</span>Communicatietools sorteren: videogesprek (synchroon) tegenover e-mail (asynchroon).</p><div class="lnk" data-step="6de-leerjaar_8-4-GL6-1"></div></div></div></div><div class="ai-yr"><h4>AI-leerlijn (schooleigen)</h4><p>In het 6e leerjaar vallen de twee AI-doelen van Op.stap: weten wat AI is en het woord taalmodel kennen (8.2.GL6.7), en voorbeelden geven van toepassingen met AI (8.2.GL6.8). Op het einde van het 6e leerjaar bereiken de leerlingen de einddoelen van de 3e graad basis.</p><a href="#ll4">Naar de AI-leerlijn</a></div></div>
+</div>
+</section>
+<section class="check" id="check">
+<div class="wrap">
+<h2>Dekkingscheck leerplandoelen</h2>
+<div class="big"><span class="num">86<em>/86</em></span><p>Alle leerplandoelen ICT komen in de leerlijnen aan bod. Geen doel ontbreekt en geen doel staat in twee leerlijnen.</p></div>
+<div class="scroll"><table class="plain cov"><thead><tr><th scope="col">Domein</th><th scope="col">Spoor in het leerplan</th><th scope="col">Leerplandoelen</th><th scope="col">Gedekt</th><th scope="col">Opgenomen in</th></tr></thead><tbody><tr><td><strong>8.1</strong></td><td>Inzicht in digitale systemen</td><td><span class="code">GL1.1</span><span class="code">GL2.1</span><span class="code">GL3.1</span><span class="code">GL4.1</span><span class="code">GL5.1</span><span class="code">GL5.2</span><span class="code">GL5.3</span><span class="code">GL6.1</span><span class="code">GL6.2</span><span class="code">GL6.3</span></td><td><span class="ok">10/10</span></td><td>Leerlijn 1 · spoor 1A</td></tr><tr><td><strong>8.1</strong></td><td>Principes van computationeel denken</td><td><span class="code">GK2.1</span><span class="code">GK3.1</span><span class="code">GK3.2</span><span class="code">GL1.2</span><span class="code">GL1.3</span><span class="code">GL1.4</span><span class="code">GL2.2</span><span class="code">GL2.3</span><span class="code">GL2.4</span><span class="code">GL2.5</span><span class="code">GL3.2</span><span class="code">GL3.3</span><span class="code">GL3.4</span><span class="code">GL3.5</span><span class="code">GL4.2</span><span class="code">GL4.3</span><span class="code">GL4.4</span><span class="code">GL4.5</span><span class="code">GL4.6</span><span class="code">GL5.4</span><span class="code">GL5.5</span><span class="code">GL5.6</span><span class="code">GL6.4</span></td><td><span class="ok">23/23</span></td><td>Leerlijn 1 · spoor 1B</td></tr><tr><td><strong>8.2</strong></td><td>Digitale geletterdheid</td><td><span class="code">GK3.1</span><span class="code">GK3.2</span><span class="code">GL1.1</span><span class="code">GL1.2</span><span class="code">GL2.1</span><span class="code">GL3.1</span><span class="code">GL3.2</span><span class="code">GL3.3</span><span class="code">GL4.1</span><span class="code">GL4.2</span><span class="code">GL5.1</span><span class="code">GL5.2</span><span class="code">GL5.3</span><span class="code">GL5.4</span><span class="code">GL6.1</span><span class="code">GL6.2</span><span class="code">GL6.3</span><span class="code">GL6.4</span></td><td><span class="ok">18/18</span></td><td>Leerlijn 2 · spoor 2A</td></tr><tr><td><strong>8.2</strong></td><td>Informatiegeletterdheid</td><td><span class="code">GK3.3</span><span class="code">GL1.3</span><span class="code">GL2.2</span><span class="code">GL3.5</span><span class="code">GL3.6</span><span class="code">GL3.7</span><span class="code">GL4.3</span><span class="code">GL4.4</span><span class="code">GL4.5</span><span class="code">GL4.6</span><span class="code">GL4.7</span><span class="code">GL5.5</span><span class="code">GL5.6</span><span class="code">GL6.5</span><span class="code">GL6.6</span><span class="code">GL6.7</span><span class="code">GL6.8</span></td><td><span class="ok">17/17</span></td><td>Leerlijn 2 · spoor 2B</td></tr><tr><td><strong>8.3</strong></td><td>Auteurs- en portretrecht</td><td><span class="code">GL5.1</span><span class="code">GL5.2</span><span class="code">GL5.3</span><span class="code">GL6.1</span></td><td><span class="ok">4/4</span></td><td>Leerlijn 3 · spoor 3B</td></tr><tr><td><strong>8.3</strong></td><td>Digitale veiligheid</td><td><span class="code">GL1.1</span><span class="code">GL2.1</span><span class="code">GL3.1</span><span class="code">GL4.1</span><span class="code">GL5.4</span><span class="code">GL6.2</span><span class="code">GL6.3</span><span class="code">GL6.4</span><span class="code">GL6.5</span><span class="code">GL6.6</span><span class="code">GL6.7</span><span class="code">GL6.8</span></td><td><span class="ok">12/12</span></td><td>Leerlijn 3 · spoor 3A</td></tr><tr><td><strong>8.4</strong></td><td>Communiceren</td><td><span class="code">GL5.1</span><span class="code">GL6.1</span></td><td><span class="ok">2/2</span></td><td>Leerlijn 3 · spoor 3C</td></tr></tbody></table></div>
+<h3>Versiecontrole</h3>
+<div class="vercheck">
+<div><span class="vk">Leerplanversie in gebruik</span><span class="vv"><b class="v-ver">V1.3</b> (<span class="v-date">15/10/2026</span>)</span></div>
+<div><span class="vk">Laatst gecontroleerd</span><span class="vv v-chk">29/10/2026</span></div>
+<div><span class="vk">Resultaat</span><span class="vv v-res">Actueel: geen wijzigingen aan ICT in het wijzigingsoverzicht van 12/10/2026.</span></div>
+</div>
+<p class="note">Bron: <a class="v-src" href="https://pro.katholiekonderwijs.vlaanderen/aanpassingen-aan-leerplan-sinds-1-september-2026-1" rel="noopener" target="_blank">PRO. – Aanpassingen aan leerplan</a> en de <a href="https://opstap.katholiekonderwijs.vlaanderen/" rel="noopener" target="_blank">Op.stap-leerplantool</a>. De versie wordt nagekeken bij elke aanpassing aan deze pagina.</p>
+<h3>Spreiding over de leerjaren</h3>
+<p class="note">Aantal leerplandoelen per leerjaar, per leerlijn.</p>
+<div aria-label="Aantal leerplandoelen per leerjaar en leerlijn" class="bars" role="table"><div aria-hidden="true" class="bars-legend"><span><i class="k1"></i>Computationeel denken</span><span><i class="k2"></i>Digitale informatieveiligheid</span><span><i class="k3"></i>Mediawijsheid</span></div><div class="bar-row" role="row"><span class="bar-lbl" role="rowheader">Jongste en 1ste kleuter</span><span aria-label="0 + 0 + 0" class="bar-track" role="cell"></span><span class="bar-tot" role="cell">0</span></div><div class="bar-row" role="row"><span class="bar-lbl" role="rowheader">2de kleuter</span><span aria-label="1 + 0 + 0" class="bar-track" role="cell"><span class="seg k1" style="width:4.76%" title="1">1</span></span><span class="bar-tot" role="cell">1</span></div><div class="bar-row" role="row"><span class="bar-lbl" role="rowheader">3de kleuter</span><span aria-label="2 + 3 + 0" class="bar-track" role="cell"><span class="seg k1" style="width:9.52%" title="2">2</span><span class="seg k2" style="width:14.29%" title="3">3</span></span><span class="bar-tot" role="cell">5</span></div><div class="bar-row" role="row"><span class="bar-lbl" role="rowheader">1ste leerjaar</span><span aria-label="4 + 3 + 1" class="bar-track" role="cell"><span class="seg k1" style="width:19.05%" title="4">4</span><span class="seg k2" style="width:14.29%" title="3">3</span><span class="seg k3" style="width:4.76%" title="1">1</span></span><span class="bar-tot" role="cell">8</span></div><div class="bar-row" role="row"><span class="bar-lbl" role="rowheader">2de leerjaar</span><span aria-label="5 + 2 + 1" class="bar-track" role="cell"><span class="seg k1" style="width:23.81%" title="5">5</span><span class="seg k2" style="width:9.52%" title="2">2</span><span class="seg k3" style="width:4.76%" title="1">1</span></span><span class="bar-tot" role="cell">8</span></div><div class="bar-row" role="row"><span class="bar-lbl" role="rowheader">3de leerjaar</span><span aria-label="5 + 6 + 1" class="bar-track" role="cell"><span class="seg k1" style="width:23.81%" title="5">5</span><span class="seg k2" style="width:28.57%" title="6">6</span><span class="seg k3" style="width:4.76%" title="1">1</span></span><span class="bar-tot" role="cell">12</span></div><div class="bar-row" role="row"><span class="bar-lbl" role="rowheader">4de leerjaar</span><span aria-label="6 + 7 + 1" class="bar-track" role="cell"><span class="seg k1" style="width:28.57%" title="6">6</span><span class="seg k2" style="width:33.33%" title="7">7</span><span class="seg k3" style="width:4.76%" title="1">1</span></span><span class="bar-tot" role="cell">14</span></div><div class="bar-row" role="row"><span class="bar-lbl" role="rowheader">5de leerjaar</span><span aria-label="6 + 6 + 5" class="bar-track" role="cell"><span class="seg k1" style="width:28.57%" title="6">6</span><span class="seg k2" style="width:28.57%" title="6">6</span><span class="seg k3" style="width:23.81%" title="5">5</span></span><span class="bar-tot" role="cell">17</span></div><div class="bar-row" role="row"><span class="bar-lbl" role="rowheader">6de leerjaar</span><span aria-label="4 + 8 + 9" class="bar-track" role="cell"><span class="seg k1" style="width:19.05%" title="4">4</span><span class="seg k2" style="width:38.10%" title="8">8</span><span class="seg k3" style="width:42.86%" title="9">9</span></span><span class="bar-tot" role="cell">21</span></div></div>
+<h3>Aandachtspunten</h3>
+<ul class="points">
+<li><b>Nummering 8.2</b>In het 3de leerjaar springt de code van 8.2.GL3.3 naar 8.2.GL3.5; 8.2.GL3.4 bestaat niet in versie V1.3. Even navragen bij OP STAP of hier een doel ontbreekt.</li>
+<li><b>Jongste en 1ste kleuter</b>Het leerplan noemt deze routes, maar bevat er geen ICT-doelen voor. De Mediawijs-aanvullingen bij leerlijn 3 kunnen hier een start zijn.</li>
+<li><b>Domein 8.4</b>De twee communicatiedoelen staan bij mediawijsheid, omdat er geen aparte leerlijn digitale creatie gevraagd was.</li>
+<li><b>Zwaartepunt in het 6de leerjaar</b>21 doelen, waarvan 9 rond mediawijsheid. Spreid de impactdoelen (8.3.GL6.4 – 8.3.GL6.8) best over het schooljaar.</li>
+<li><b>Dubbele formulering</b>8.3.GL5.4 en 8.3.GL6.3 hebben dezelfde tekst; 8.4.GL5.1 en 8.4.GL6.1 ook, op de woordenschat na. Het verschil zit in het niveau: beginnend tegenover gevorderd.</li>
+</ul>
+</div>
+</section>
+</main>
+<footer><div class="wrap"><b>Leerlijnen ICT</b> · gebaseerd op het leerplan ICT van OP STAP (V1.3, 15/10/2026) en de Leerlijn mediawijsheid van Mediawijs.</div></footer>
+<script>
+(function(){
+ function ok(u){try{return new URL(u).protocol==='https:';}catch(e){return false;}}
+ function warn(t){var d=document.createElement('div');d.className='lnk-warn';d.setAttribute('role','status');d.textContent=t;var x=document.createElement('button');x.type='button';x.textContent='Sluiten';x.onclick=function(){d.remove();};d.appendChild(x);document.body.appendChild(d);}
+ function render(){var L=window.SHAREPOINT_LINKS;if(!L||typeof L!=='object'){warn('SharePoint-links: sharepoint-links.js bevat een fout (bv. gekrulde aanhalingstekens of een ontbrekende komma). Controleer het bestand op GitHub.');return;}
+  var n=0,bad=[];[].forEach.call(document.querySelectorAll('.lnk[data-step]'),function(el){var u=L[el.dataset.step];if(!u)return;if(!ok(u)){if(bad.indexOf(el.dataset.step)<0)bad.push(el.dataset.step);return;}var map=el.classList.contains('lnk-map');
+   var a=document.createElement('a');a.className='lnk-a';a.href=u;a.target='_blank';a.rel='noopener noreferrer';a.textContent=map?(el.dataset.step.indexOf('map:leerlijn')===0?'Map van deze leerlijn in SharePoint ↗':'Map van dit leerjaar in SharePoint ↗'):'Lesmateriaal in SharePoint ↗';el.appendChild(a);n++;});
+  var known={};[].forEach.call(document.querySelectorAll('.lnk[data-step]'),function(el){known[el.dataset.step]=1;});
+  var unknown=Object.keys(L).filter(function(k){return L[k]&&!known[k];});
+  if(bad.length||unknown.length)warn('SharePoint-links: '+(bad.length?'deze links beginnen niet met https:// — '+bad.join(', ')+'. ':'')+(unknown.length?'deze sleutels bestaan niet op de pagina — '+unknown.join(', ')+'.':''));}
+ var s=document.createElement('script');s.src='sharepoint-links.js?v='+Date.now();
+ s.onload=render;s.onerror=function(){warn('SharePoint-links: het bestand sharepoint-links.js werd niet gevonden. Het moet exact zo heten en naast index.html staan.');};
+ document.body.appendChild(s);
+})();
+
+(function(){
+ var tabs=[].slice.call(document.querySelectorAll('.yr-tabs [role=tab]'));
+ function sel(t,focus){tabs.forEach(function(b){var on=b===t;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;var p=document.getElementById(b.getAttribute('aria-controls'));if(p)p.hidden=!on;});if(focus)t.focus();try{history.replaceState(null,'','#'+t.getAttribute('aria-controls'));}catch(e){}}
+ tabs.forEach(function(b,i){b.addEventListener('click',function(){sel(b);});b.addEventListener('keydown',function(e){var k=e.key;if(k==='ArrowRight'||k==='ArrowLeft'){e.preventDefault();sel(tabs[(i+(k==='ArrowRight'?1:tabs.length-1))%tabs.length],true);}});});
+ var h=location.hash.slice(1);if(h){var t=tabs.filter(function(b){return b.getAttribute('aria-controls')===h;})[0];if(t){sel(t);var p=document.getElementById('perjaar');if(p)p.scrollIntoView();}}
+ try{var links=[].slice.call(document.querySelectorAll('nav.top a')),map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.remove('active');});var a=map[e.target.id];if(a)a.classList.add('active');}});},{rootMargin:'-30% 0px -60% 0px'});
+  Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});}catch(e){}
+})();
+
+(function(){
+ var TO='rembertbasis.ict@sint-rembert.be';
+ var d=document.createElement('dialog');d.className='sugdlg';d.setAttribute('aria-labelledby','sug-t');
+ d.innerHTML='<div class="hd"><b id="sug-t">Suggestie</b><span class="ctx"></span></div><div class="bd"><label>Jouw suggestie<textarea id="sug-txt" maxlength="2000" placeholder="Bv. een lesidee, materiaal, een onduidelijkheid of een fout"></textarea></label><p class="note" style="margin:0">Je e-mailprogramma opent met een ingevuld bericht aan '+TO+'. Je verstuurt het zelf. Vermeld geen namen van leerlingen.</p></div><div class="ft"><a class="btn" id="sug-mail" href="#" target="_blank" rel="noopener">Open in e-mail</a><button type="button" class="btn-sm" id="sug-copy">Kopieer tekst</button><button type="button" class="btn-sm" id="sug-close">Annuleren</button><span class="msg" aria-live="polite"></span></div>';
+ document.body.appendChild(d);
+ var code='',step='',txt=d.querySelector('#sug-txt'),mail=d.querySelector('#sug-mail'),msg=d.querySelector('.msg');
+ function ver(){var v=document.querySelector('.v-ver');return v?v.textContent:'';}
+ function body(){return 'Suggestie bij leerdoel: '+step+'\nLeerplandoelen: '+code+'\nLeerplanversie: Op.stap ICT '+ver()+'\n\nSuggestie:\n'+(txt.value.trim()||'(nog in te vullen)')+'\n';}
+ function subj(){return 'Suggestie leerlijn ICT – '+code;}
+ function upd(){mail.href='mailto:'+TO+'?subject='+encodeURIComponent(subj())+'&body='+encodeURIComponent(body());}
+ txt.addEventListener('input',upd);
+ document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('button.sug');if(!b)return;code=b.dataset.code;step=b.dataset.t||'';
+  d.querySelector('#sug-t').textContent='Suggestie bij dit leerdoel';d.querySelector('.ctx').textContent=step+' ('+code+')';txt.value='';msg.textContent='';upd();
+  if(d.showModal)d.showModal();else d.setAttribute('open','');setTimeout(function(){txt.focus();},30);});
+ function close(){if(d.close)d.close();else d.removeAttribute('open');}
+ d.querySelector('#sug-close').addEventListener('click',close);
+ d.addEventListener('click',function(e){if(e.target===d)close();});
+ mail.addEventListener('click',function(){upd();msg.textContent='Je e-mailprogramma wordt geopend. Opent er niets? Gebruik Kopieer tekst en mail naar '+TO+'.';});
+ d.querySelector('#sug-copy').addEventListener('click',async function(){var t='Aan: '+TO+'\nOnderwerp: '+subj()+'\n\n'+body();
+  try{await navigator.clipboard.writeText(t);msg.textContent='Gekopieerd. Plak de tekst in een nieuwe e-mail aan '+TO+'.';}
+  catch(err){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand('copy');}catch(x){}ta.remove();msg.textContent=ok?'Gekopieerd. Plak de tekst in een nieuwe e-mail aan '+TO+'.':'Kopiëren lukte niet. Mail je suggestie naar '+TO+'.';}});
+})();</script></body>
+</html>
