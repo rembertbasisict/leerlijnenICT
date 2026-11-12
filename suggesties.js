@@ -7,7 +7,7 @@ window.LES_SUGGESTIES = {
 
   // ===== 2de kleuter =====
   // 1B · Principes van computationeel denken · 8.1.GK2.1
-  "2de-kleuter_8-1-GK2-1": "TEST Unplugged: een stappenplan volgen met pictokaarten (jas aantrekken); een klasgenoot als ‘robot’ over de codeermat sturen; een eenvoudig LEGO-bouwwerk nabouwen met een bouwkaart.",
+  "2de-kleuter_8-1-GK2-1": "Unplugged: een stappenplan volgen met pictokaarten (jas aantrekken); een klasgenoot als ‘robot’ over de codeermat sturen; een eenvoudig LEGO-bouwwerk nabouwen met een bouwkaart.",
 
   // ===== 3de kleuter =====
   // 1B · Principes van computationeel denken · 8.1.GK3.1, 8.1.GK3.2
