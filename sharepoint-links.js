@@ -41,11 +41,11 @@ window.SHAREPOINT_LINKS = {
 
   // ===== 4de leerjaar =====
   "map:4de-leerjaar": "",   // map van het hele leerjaar (knop bovenaan bij Per leerjaar)
-  "4de-leerjaar_8-1-GL4-1": "",   // 8.1.GL4.1 · Gebruikt de begrippen verzenden, ontvangen, offline en online.
-  "4de-leerjaar_8-1-GL4-2": "",   // 8.1.GL4.2 · Kent het begrip algoritme en gebruikt de principes in schoolse taken.
-  "4de-leerjaar_8-2-GL4-1": "",   // 8.2.GL4.1 · Combineert muis, toetsenbord en printer in één taak; opent bestanden met bijhorende med…
-  "4de-leerjaar_8-2-GL4-3": "",   // 8.2.GL4.3 · Formuleert eerst een zoekvraag (wat wil ik weten?), dan een zoekopdracht; kiest een zoe…
-  "4de-leerjaar_8-3-GL4-1": "",   // 8.3.GL4.1 · Kent het begrip online privacy: zelf kiezen wat je deelt en met wie.
+  "4de-leerjaar_8-1-GL4-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/01.%20Computationeel%20Denken/Inzicht%20in%20digitale%20systemen/2.%202de%20graad/04.%20Verzenden,%20ontvangen,%20online%20en%20offline?d=wc6bac0ac5e5746f690b9333f4d285352&csf=1&web=1&e=VFNRkG",   // 8.1.GL4.1 · Gebruikt de begrippen verzenden, ontvangen, offline en online.
+  "4de-leerjaar_8-1-GL4-2": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/01.%20Computationeel%20Denken/Principes%20van%20Computationeel%20denken/03.%202de%20graad?d=waa6edc69c3744c4e8411fe0bdafbeb33&csf=1&web=1&e=WVrqyd",   // 8.1.GL4.2 · Kent het begrip algoritme en gebruikt de principes in schoolse taken.
+  "4de-leerjaar_8-2-GL4-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/02.%20Digitale%20Informatieveiligheid/Digitale%20geletterdheid/03.%202de%20graad?d=w4dba1796bfe44e11926f2cb84f6c2b28&csf=1&web=1&e=GGYZUP",   // 8.2.GL4.1 · Combineert muis, toetsenbord en printer in één taak; opent bestanden met bijhorende med…
+  "4de-leerjaar_8-2-GL4-3": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/02.%20Digitale%20Informatieveiligheid/Informatiegeletterdheid/03.%202de%20graad?d=wf04883c5d8d440308abeaaa3e0b06278&csf=1&web=1&e=USRTwF",   // 8.2.GL4.3 · Formuleert eerst een zoekvraag (wat wil ik weten?), dan een zoekopdracht; kiest een zoe…
+  "4de-leerjaar_8-3-GL4-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/03.%20Mediawijsheid/02.%202de%20graad/02.%20Persoonlijke%20gegevens%20en%20privacy?d=w4a1cf0d13361435db67d1007c2857b07&csf=1&web=1&e=Dd08kl",   // 8.3.GL4.1 · Kent het begrip online privacy: zelf kiezen wat je deelt en met wie.
 
   // ===== 5de leerjaar =====
   "map:5de-leerjaar": "",   // map van het hele leerjaar (knop bovenaan bij Per leerjaar)
