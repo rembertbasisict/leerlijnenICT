@@ -25,11 +25,11 @@ window.SHAREPOINT_LINKS = {
 
   // ===== 2de leerjaar =====
   "map:2de-leerjaar": "",   // map van het hele leerjaar (knop bovenaan bij Per leerjaar)
-  "2de-leerjaar_8-1-GL2-1": "",   // 8.1.GL2.1 · Gebruikt de begrippen hardware en software en weet dat hardware niet werkt zonder softw…
-  "2de-leerjaar_8-1-GL2-2": "",   // 8.1.GL2.2 · Voegt decompositie toe aan de vier principes.
-  "2de-leerjaar_8-2-GL2-1": "",   // 8.2.GL2.1 · Basisgebruik van toetsenbord en muis of touchpad.
-  "2de-leerjaar_8-2-GL2-2": "",   // 8.2.GL2.2 · Navigeert in de leeromgeving tussen tabbladen.
-  "2de-leerjaar_8-3-GL2-1": "",   // 8.3.GL2.1 · Gaat veilig om met account en wachtwoord: een sterk wachtwoord kiezen en het niet doorg…
+  "2de-leerjaar_8-1-GL2-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/01.%20Computationeel%20Denken/Inzicht%20in%20digitale%20systemen/1.%201ste%20graad/02.%20Hardware%20en%20software?d=wedced2c796884e28a3bbcd5e3bdfa025&csf=1&web=1&e=h8uiOm",   // 8.1.GL2.1 · Gebruikt de begrippen hardware en software en weet dat hardware niet werkt zonder softw…
+  "2de-leerjaar_8-1-GL2-2": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/01.%20Computationeel%20Denken/Principes%20van%20Computationeel%20denken/02.%201ste%20graad/03.%20Decompositie?d=w0e1005fdd3854241920b9950dc37a958&csf=1&web=1&e=rNDUOC",   // 8.1.GL2.2 · Voegt decompositie toe aan de vier principes.
+  "2de-leerjaar_8-2-GL2-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/02.%20Digitale%20Informatieveiligheid/Digitale%20geletterdheid/02.%201ste%20graad/02.%20Invoer-%20en%20uitvoerapparaten?d=w49fd599b278e4eccb824c6253e613117&csf=1&web=1&e=DbQmZH",   // 8.2.GL2.1 · Basisgebruik van toetsenbord en muis of touchpad.
+  "2de-leerjaar_8-2-GL2-2": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/02.%20Digitale%20Informatieveiligheid/Informatiegeletterdheid/02.%201ste%20graad/01.%20Navigeren%20in%20een%20toepassing?d=weebfd52650b74a719a9624ac3d824953&csf=1&web=1&e=AEuU2l",   // 8.2.GL2.2 · Navigeert in de leeromgeving tussen tabbladen.
+  "2de-leerjaar_8-3-GL2-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/03.%20Mediawijsheid/01.%201ste%20graad/01.%20Account%20en%20wachtwoord?d=w0bc0bc0ff1234cd5902c52b07462dd8d&csf=1&web=1&e=0ipBZy",   // 8.3.GL2.1 · Gaat veilig om met account en wachtwoord: een sterk wachtwoord kiezen en het niet doorg…
 
   // ===== 3de leerjaar =====
   "map:3de-leerjaar": "",   // map van het hele leerjaar (knop bovenaan bij Per leerjaar)
