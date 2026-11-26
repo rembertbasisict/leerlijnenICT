@@ -3,7 +3,7 @@
 // Pas de tekst tussen de aanhalingstekens aan en klik op Commit changes.
 // Gebruik geen rechte aanhalingstekens (") in de tekst; ’ en ‘ en “ ” mogen wel. Laat de komma op het einde staan.
 // Leeg laten ("") = geen aanvulling bij dat leerdoel. De sleutel links niet veranderen.
-// Versie: 13/11/2026, nagekeken en vereenvoudigd.
+// Versie: leerdoelen opgesplitst per onderwerp; aanvullingen verplaatst naar het juiste leerdoel.
 // Een link toevoegen: schrijf Naam (https://…). Op de site wordt de naam klikbaar.
 
 window.LES_SUGGESTIES = {
@@ -23,8 +23,12 @@ window.LES_SUGGESTIES = {
   // ===== 1ste leerjaar =====
   // 1A · Inzicht in digitale systemen · 8.1.GL1.1
   "1ste-leerjaar_8-1-GL1-1": "Een tekening maken in Draw & Tell en vergelijken met een tekening op papier.",
-  // 1B · Principes van computationeel denken · 8.1.GL1.2, 8.1.GL1.3, 8.1.GL1.4
-  "1ste-leerjaar_8-1-GL1-2": "In duo’s een route programmeren met de Bee-Bot en samen de fouten zoeken.",
+  // 1B · Principes van computationeel denken · 8.1.GL1.2
+  "1ste-leerjaar_8-1-GL1-2": "",
+  // 1B · Principes van computationeel denken · 8.1.GL1.3
+  "1ste-leerjaar_8-1-GL1-3": "",
+  // 1B · Principes van computationeel denken · 8.1.GL1.4
+  "1ste-leerjaar_8-1-GL1-4": "In duo’s een route programmeren met de Bee-Bot en samen de fouten zoeken.",
   // 2A · Digitale geletterdheid · 8.2.GL1.1, 8.2.GL1.2
   "1ste-leerjaar_8-2-GL1-1": "Bingel openen, een oefening starten en Bingel weer sluiten.",
   // 2B · Informatiegeletterdheid · 8.2.GL1.3
@@ -47,10 +51,18 @@ window.LES_SUGGESTIES = {
   // ===== 3de leerjaar =====
   // 1A · Inzicht in digitale systemen · 8.1.GL3.1
   "3de-leerjaar_8-1-GL3-1": "De wenslijst typen in Word, afdrukken en bewaren in SharePoint. Bij elke stap samen benoemen: is dit invoer, verwerking, uitvoer of opslag?",
-  // 1B · Principes van computationeel denken · 8.1.GL3.2, 8.1.GL3.3, 8.1.GL3.4, 8.1.GL3.5
-  "3de-leerjaar_8-1-GL3-2": "De Blue-Bot programmeren met de kaartjeslezer: eerst de route met kaartjes leggen, dan de robot laten rijden en zoeken waar het misloopt.",
-  // 2A · Digitale geletterdheid · 8.2.GL3.1, 8.2.GL3.2, 8.2.GL3.3
-  "3de-leerjaar_8-2-GL3-1": "Een korte tekst in Word typen met hoofdletters (Shift), bewaren in de klasmap en de volgende dag zelf weer openen.",
+  // 1B · Principes van computationeel denken · 8.1.GL3.2
+  "3de-leerjaar_8-1-GL3-2": "",
+  // 1B · Principes van computationeel denken · 8.1.GL3.3
+  "3de-leerjaar_8-1-GL3-3": "",
+  // 1B · Principes van computationeel denken · 8.1.GL3.4
+  "3de-leerjaar_8-1-GL3-4": "",
+  // 1B · Principes van computationeel denken · 8.1.GL3.5
+  "3de-leerjaar_8-1-GL3-5": "De Blue-Bot programmeren met de kaartjeslezer: eerst de route met kaartjes leggen, dan de robot laten rijden en zoeken waar het misloopt.",
+  // 2A · Digitale geletterdheid · 8.2.GL3.2
+  "3de-leerjaar_8-2-GL3-2": "Een korte tekst in Word typen met hoofdletters (Shift).",
+  // 2A · Digitale geletterdheid · 8.2.GL3.1, 8.2.GL3.3
+  "3de-leerjaar_8-2-GL3-1": "Een tekst uit Word bewaren in de klasmap en de volgende dag zelf weer openen.",
   // 2B · Informatiegeletterdheid · 8.2.GL3.5, 8.2.GL3.6, 8.2.GL3.7
   "3de-leerjaar_8-2-GL3-5": "Sorteeroefening: bij elke vraag de juiste zoektool kiezen, bijvoorbeeld “Hoe ver is het naar zee?” → routeplanner, “Wat betekent dit woord?” → woordenboek. Daarna samen een zoekopdracht intypen en de resultaten bekijken.",
   // 3A · Digitale veiligheid · 8.3.GL3.1
@@ -59,40 +71,70 @@ window.LES_SUGGESTIES = {
   // ===== 4de leerjaar =====
   // 1A · Inzicht in digitale systemen · 8.1.GL4.1
   "4de-leerjaar_8-1-GL4-1": "Een oefening maken in Bingel: wat wordt verzonden als je op “klaar” klikt, en wat ontvang je terug? Zet daarna de wifi uit: welke apps werken nog (offline) en welke niet meer (online)?",
-  // 1B · Principes van computationeel denken · 8.1.GL4.2, 8.1.GL4.3, 8.1.GL4.4, 8.1.GL4.5, 8.1.GL4.6
+  // 1B · Principes van computationeel denken · 8.1.GL4.3
+  "4de-leerjaar_8-1-GL4-3": "",
+  // 1B · Principes van computationeel denken · 8.1.GL4.4
+  "4de-leerjaar_8-1-GL4-4": "",
+  // 1B · Principes van computationeel denken · 8.1.GL4.5
+  "4de-leerjaar_8-1-GL4-5": "",
+  // 1B · Principes van computationeel denken · 8.1.GL4.2, 8.1.GL4.6
   "4de-leerjaar_8-1-GL4-2": "In hoekenwerk levels van Code Master oplossen.",
-  // 2A · Digitale geletterdheid · 8.2.GL4.1, 8.2.GL4.2
+  // 2A · Digitale geletterdheid · 8.2.GL4.1
   "4de-leerjaar_8-2-GL4-1": "In Word een collage maken met tekst en een afbeelding uit de klasmap, en ze afdrukken.",
-  // 2B · Informatiegeletterdheid · 8.2.GL4.3, 8.2.GL4.4, 8.2.GL4.5, 8.2.GL4.6, 8.2.GL4.7
+  // 2A · Digitale geletterdheid · 8.2.GL4.2
+  "4de-leerjaar_8-2-GL4-2": "",
+  // 2B · Informatiegeletterdheid · 8.2.GL4.3, 8.2.GL4.4, 8.2.GL4.5, 8.2.GL4.7
   "4de-leerjaar_8-2-GL4-3": "Voor de eigen spreekbeurt eerst de zoekvraag opschrijven (wat wil ik weten?), dan de zoekopdracht (welke woorden typ ik in?), en bij de resultaten kiezen welke website echt antwoord geeft.",
+  // 2B · Informatiegeletterdheid · 8.2.GL4.6
+  "4de-leerjaar_8-2-GL4-6": "",
   // 3A · Digitale veiligheid · 8.3.GL4.1
   "4de-leerjaar_8-3-GL4-1": "Een avatar tekenen om als profielfoto te gebruiken in plaats van een echte foto, en bespreken waarom dat je privacy beschermt.",
 
   // ===== 5de leerjaar =====
-  // 1A · Inzicht in digitale systemen · 8.1.GL5.1, 8.1.GL5.2, 8.1.GL5.3
+  // 1A · Inzicht in digitale systemen · 8.1.GL5.1, 8.1.GL5.3
   "5de-leerjaar_8-1-GL5-1": "Met Makey Makey een banaan als toets gebruiken: wat is hier de invoer, de verwerking en de uitvoer?",
-  // 1B · Principes van computationeel denken · 8.1.GL5.4, 8.1.GL5.5, 8.1.GL5.6
-  "5de-leerjaar_8-1-GL5-4": "Een LEGO WeDo 2.0-model programmeren: de motor draait in een herhaling, en een sensor beslist wanneer het stopt (als … dan).",
-  // 2A · Digitale geletterdheid · 8.2.GL5.1, 8.2.GL5.2, 8.2.GL5.3, 8.2.GL5.4
-  "5de-leerjaar_8-2-GL5-1": "Een PowerPoint bewaren in de juiste map op SharePoint met een duidelijke naam (bv. “spreekbeurt-dieren-voornaam”), en een fout of dubbel bestand verwijderen.",
-  // 2B · Informatiegeletterdheid · 8.2.GL5.5, 8.2.GL5.6
-  "5de-leerjaar_8-2-GL5-5": "Een website beoordelen met drie vragen: geeft ze antwoord op mijn vraag? Begrijp ik de tekst? Gaat ze echt over mijn onderwerp?",
+  // 1A · Inzicht in digitale systemen · 8.1.GL5.2
+  "5de-leerjaar_8-1-GL5-2": "",
+  // 1B · Principes van computationeel denken · 8.1.GL5.4
+  "5de-leerjaar_8-1-GL5-4": "",
+  // 1B · Principes van computationeel denken · 8.1.GL5.5
+  "5de-leerjaar_8-1-GL5-5": "",
+  // 1B · Principes van computationeel denken · 8.1.GL5.6
+  "5de-leerjaar_8-1-GL5-6": "Een LEGO WeDo 2.0-model programmeren: de motor draait in een herhaling, en een sensor beslist wanneer het stopt (als … dan).",
+  // 2A · Digitale geletterdheid · 8.2.GL5.1
+  "5de-leerjaar_8-2-GL5-1": "",
+  // 2A · Digitale geletterdheid · 8.2.GL5.2, 8.2.GL5.3
+  "5de-leerjaar_8-2-GL5-2": "Een PowerPoint bewaren in de juiste map op SharePoint met een duidelijke naam (bv. “spreekbeurt-dieren-voornaam”), en een fout of dubbel bestand verwijderen.",
+  // 2A · Digitale geletterdheid · 8.2.GL5.4
+  "5de-leerjaar_8-2-GL5-4": "",
+  // 2B · Informatiegeletterdheid · 8.2.GL5.5
+  "5de-leerjaar_8-2-GL5-5": "",
+  // 2B · Informatiegeletterdheid · 8.2.GL5.6
+  "5de-leerjaar_8-2-GL5-6": "Een website beoordelen met drie vragen: geeft ze antwoord op mijn vraag? Begrijp ik de tekst? Gaat ze echt over mijn onderwerp?",
   // 3A · Digitale veiligheid · 8.3.GL5.4
-  "5de-leerjaar_8-3-GL5-4": "Tijdens de Week tegen Pesten een klasgesprek over cyberpesten: wat doe je als het jou of een klasgenoot overkomt, en bij wie kan je terecht? Lesmateriaal van Mediawijs: Kritikat (https://www.mediawijs.be/nl/kritikat), HoeZoo (https://www.mediawijs.be/nl/hoezoo), Is het echt zo? (https://www.mediawijs.be/nl/tools/het-echt-zo).",
+  "5de-leerjaar_8-3-GL5-4": "Tijdens de Week tegen Pesten een klasgesprek over cyberpesten: wat doe je als het jou of een klasgenoot overkomt, en bij wie kan je terecht? Lesmateriaal van Mediawijs: Kritikat (https://www.mediawijs.be/nl/kritikat), HoeZoo (https://www.mediawijs.be/nl/hoezoo), Is het echt zo? (https://www.mediawijs.be/nl/tools/het-echt-zo). Strip met lespakket voor het 5de en 6de leerjaar: Ella de cyberheldin (https://www.deloitte.com/content/dam/assets-zone2/be/en/docs/about/2023/be-ella-the-cyberhero-toolkit-nl.pdf).",
   // 3B · Auteurs- en portretrecht · 8.3.GL5.1, 8.3.GL5.2, 8.3.GL5.3
   "5de-leerjaar_8-3-GL5-1": "Twee situaties bespreken: mag ik een afbeelding uit een zoekmachine zomaar in mijn PowerPoint zetten (auteursrecht)? Mag ik een foto van een klasgenoot doorsturen zonder het te vragen (portretrecht)?",
   // 3C · Communiceren · 8.4.GL5.1
   "5de-leerjaar_8-4-GL5-1": "Met het schoolaccount een e-mail sturen naar de leerkracht, met een onderwerp, een aanspreking en een groet, en een antwoord terugsturen.",
 
   // ===== 6de leerjaar =====
-  // 1A · Inzicht in digitale systemen · 8.1.GL6.1, 8.1.GL6.2, 8.1.GL6.3
-  "6de-leerjaar_8-1-GL6-1": "Een bestand bewaren op SharePoint en het daarna op een ander toestel openen: waar staat het bestand eigenlijk?",
+  // 1A · Inzicht in digitale systemen · 8.1.GL6.1, 8.1.GL6.3
+  "6de-leerjaar_8-1-GL6-1": "",
+  // 1A · Inzicht in digitale systemen · 8.1.GL6.2
+  "6de-leerjaar_8-1-GL6-2": "Een bestand bewaren op SharePoint en het daarna op een ander toestel openen: waar staat het bestand eigenlijk?",
   // 1B · Principes van computationeel denken · 8.1.GL6.4
   "6de-leerjaar_8-1-GL6-4": "Het algoritme van de stoelendans eerst op papier uitschrijven en daarna programmeren in Scratch, met een herhaling en een keuze.",
-  // 2A · Digitale geletterdheid · 8.2.GL6.1, 8.2.GL6.2, 8.2.GL6.3, 8.2.GL6.4
-  "6de-leerjaar_8-2-GL6-1": "Een bestand als bijlage meesturen met een e-mail (uploaden) en een ontvangen bijlage bewaren (downloaden). In SharePoint een eigen map aanmaken en een bestand hernoemen.",
-  // 2B · Informatiegeletterdheid · 8.2.GL6.5, 8.2.GL6.6
-  "6de-leerjaar_8-2-GL6-5": "Twee websites over hetzelfde onderwerp vergelijken: wie schreef het, wanneer, en klopt het met wat een andere bron zegt?",
+  // 2A · Digitale geletterdheid · 8.2.GL6.1
+  "6de-leerjaar_8-2-GL6-1": "",
+  // 2A · Digitale geletterdheid · 8.2.GL6.2, 8.2.GL6.3
+  "6de-leerjaar_8-2-GL6-2": "Een bestand als bijlage meesturen met een e-mail (uploaden) en een ontvangen bijlage bewaren (downloaden). In SharePoint een eigen map aanmaken en een bestand hernoemen.",
+  // 2A · Digitale geletterdheid · 8.2.GL6.4
+  "6de-leerjaar_8-2-GL6-4": "",
+  // 2B · Informatiegeletterdheid · 8.2.GL6.5
+  "6de-leerjaar_8-2-GL6-5": "",
+  // 2B · Informatiegeletterdheid · 8.2.GL6.6
+  "6de-leerjaar_8-2-GL6-6": "Twee websites over hetzelfde onderwerp vergelijken: wie schreef het, wanneer, en klopt het met wat een andere bron zegt?",
   // 2B · Informatiegeletterdheid · 8.2.GL6.7, 8.2.GL6.8
   "6de-leerjaar_8-2-GL6-7": "De leerkracht stelt op het digitale bord een vraag aan een chatbot, en de klas bespreekt: wie geeft hier antwoord, een mens of een taalmodel? Daarna in groepjes zelf een computer iets leren herkennen (leeractiviteit AI, materiaal in SharePoint).",
   // 3A · Digitale veiligheid · 8.3.GL6.2, 8.3.GL6.3
