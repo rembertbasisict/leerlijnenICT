@@ -7,7 +7,7 @@ window.SHAREPOINT_LINKS = {
 
   // ===== 2de kleuter =====
   "map:2de-kleuter": "",   // map van het hele leerjaar (knop bovenaan bij Per leerjaar)
-  "2de-kleuter_8-1-GK2-1": "",   // 8.1.GK2.1 · Past onder begeleiding een eenvoudig stappenplan toe.
+  "2de-kleuter_8-1-GK2-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/01.%20Computationeel%20Denken/Principes%20van%20Computationeel%20denken/01.%20Oudste%20kleuters?d=w61ba79842e334feaa4ab4cbdfe3eef32&csf=1&web=1&e=3geOqt",   // 8.1.GK2.1 · Past onder begeleiding een eenvoudig stappenplan toe.
 
   // ===== 3de kleuter =====
   "map:3de-kleuter": "",   // map van het hele leerjaar (knop bovenaan bij Per leerjaar)
