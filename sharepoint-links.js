@@ -11,17 +11,17 @@ window.SHAREPOINT_LINKS = {
 
   // ===== 3de kleuter =====
   "map:3de-kleuter": "",   // map van het hele leerjaar (knop bovenaan bij Per leerjaar)
-  "3de-kleuter_8-1-GK3-1": "",   // 8.1.GK3.1 · Stelt onder begeleiding een stappenplan op, past het toe en controleert het; herkent pa…
-  "3de-kleuter_8-2-GK3-1": "",   // 8.2.GK3.1 · Gebruikt enkele knoppen (aan/uit, volume, start, terug); swipet, opent en sluit apps.
-  "3de-kleuter_8-2-GK3-3": "",   // 8.2.GK3.3 · Navigeert en zoekt in een afgebakende app.
+  "3de-kleuter_8-1-GK3-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/01.%20Computationeel%20Denken/Principes%20van%20Computationeel%20denken/01.%20Oudste%20kleuters/01.%20Stappenplan?d=wf25fd06f41ad4fec8ffbcf53db81c74f&csf=1&web=1&e=LTfZFa",   // 8.1.GK3.1 · Stelt onder begeleiding een stappenplan op, past het toe en controleert het; herkent pa…
+  "3de-kleuter_8-2-GK3-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/02.%20Digitale%20Informatieveiligheid/Digitale%20geletterdheid/01.%20Oudste%20kleuters/01.%20Toestellen%20bedienen?d=wb02c656986e0474f80614d896d9659d5&csf=1&web=1&e=xDh1Ji",   // 8.2.GK3.1 · Gebruikt enkele knoppen (aan/uit, volume, start, terug); swipet, opent en sluit apps.
+  "3de-kleuter_8-2-GK3-3": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/02.%20Digitale%20Informatieveiligheid/Informatiegeletterdheid/01.%20Oudste%20kleuters/01.%20Navigeren%20in%20een%20toepassing?d=wcfc50b1f44d04dad98de436296834993&csf=1&web=1&e=DVOobS",   // 8.2.GK3.3 · Navigeert en zoekt in een afgebakende app.
 
   // ===== 1ste leerjaar =====
   "map:1ste-leerjaar": "",   // map van het hele leerjaar (knop bovenaan bij Per leerjaar)
-  "1ste-leerjaar_8-1-GL1-1": "",   // 8.1.GL1.1 · Gebruikt de begrippen digitaal en het internet; onderscheidt analoog en digitaal.
-  "1ste-leerjaar_8-1-GL1-2": "https://sintrembert.sharepoint.com/:b:/s/REMBERT-ICT-IT-BasisPedagogisch/IQAg1LkLVSxHRo5oggxXp2UNAV7JL8_WOkWqlAtUOuG-Fsg?e=vT6avo",   // 8.1.GL1.2 · Ontwerpt, test en debugt onder begeleiding een lineair algoritme met abstractie, patroo…
-  "1ste-leerjaar_8-2-GL1-1": "",   // 8.2.GL1.1 · Start een laptop op en opent het startmenu; muisvaardigheden, vensters, schuifbalken, i…
-  "1ste-leerjaar_8-2-GL1-3": "",   // 8.2.GL1.3 · Navigeert in een afgebakende toepassing.
-  "1ste-leerjaar_8-3-GL1-1": "",   // 8.3.GL1.1 · Kent het begrip account: gebruikersnaam, wachtwoord, je digitale identiteit in een app.
+  "1ste-leerjaar_8-1-GL1-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/01.%20Computationeel%20Denken/Inzicht%20in%20digitale%20systemen/1.%201ste%20graad/01.%20Digitaal%20en%20internet?d=w7b643fb37c934573b08b529a84b0140d&csf=1&web=1&e=chF4KL",   // 8.1.GL1.1 · Gebruikt de begrippen digitaal en het internet; onderscheidt analoog en digitaal.
+  "1ste-leerjaar_8-1-GL1-2": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/01.%20Computationeel%20Denken/Principes%20van%20Computationeel%20denken/02.%201ste%20graad?d=w9012d3ad678d4f829bafd1ef8ff153f4&csf=1&web=1&e=9Vmqg2",   // 8.1.GL1.2 · Ontwerpt, test en debugt onder begeleiding een lineair algoritme met abstractie, patroo…
+  "1ste-leerjaar_8-2-GL1-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/02.%20Digitale%20Informatieveiligheid/Digitale%20geletterdheid/02.%201ste%20graad/01.%20Toestellen%20bedienen?d=wca1f5ae9727d4a7ca5b51d96e3178e39&csf=1&web=1&e=PTkLv0",   // 8.2.GL1.1 · Start een laptop op en opent het startmenu; muisvaardigheden, vensters, schuifbalken, i…
+  "1ste-leerjaar_8-2-GL1-3": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/02.%20Digitale%20Informatieveiligheid/Informatiegeletterdheid/02.%201ste%20graad/01.%20Navigeren%20in%20een%20toepassing?d=weebfd52650b74a719a9624ac3d824953&csf=1&web=1&e=o9XgkB",   // 8.2.GL1.3 · Navigeert in een afgebakende toepassing.
+  "1ste-leerjaar_8-3-GL1-1": "https://sintrembert.sharepoint.com/:f:/r/sites/Basis/PICT/03.%20Mediawijsheid/01.%201ste%20graad/01.%20Account%20en%20wachtwoord?d=w0bc0bc0ff1234cd5902c52b07462dd8d&csf=1&web=1&e=BtHsXb",   // 8.3.GL1.1 · Kent het begrip account: gebruikersnaam, wachtwoord, je digitale identiteit in een app.
 
   // ===== 2de leerjaar =====
   "map:2de-leerjaar": "",   // map van het hele leerjaar (knop bovenaan bij Per leerjaar)
