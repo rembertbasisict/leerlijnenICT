@@ -1,13 +1,13 @@
-# Leerlijnen ICT – OP STAP
+# Leerlijnen ICT – Op.stap
 
 Doorlopende leerlijnen ICT van kleuter tot 6de leerjaar, opgebouwd uit de 86 leerplandoelen ICT van Op.stap (leerplanversie V1.3, gecontroleerd op 29/10/2026) en de Leerlijn mediawijsheid van Mediawijs, aangevuld met de schooleigen AI-leerlijn van Scholengroep Sint-Rembert.
 
-Deze versie is een naslagpagina: ze bewaart geen gegevens en vraagt geen aanmelding. Bij elk leerdoel opent de knop **✎ Suggestie** een e-mail naar rembertbasis.ict@sint-rembert.be.
+Deze versie is een naslagpagina: ze bewaart geen gegevens en vraagt geen aanmelding. Bij elk leerdoel opent de knop **✎ Suggestie** een e-mail naar basis.ict.pedagogisch@sint-rembert.be.
 
 ## 1. Op GitHub Pages zetten
 
 1. Maak op GitHub een nieuwe repository, bijvoorbeeld `leerlijnen-ict`.
-2. Upload `index.html` en deze `README.md` (Add file > Upload files > Commit changes).
+2. Upload `index.html`, `sharepoint-links.js`, `suggesties.js` en deze `README.md` (Add file > Upload files > Commit changes).
 3. Ga naar **Settings > Pages**. Kies bij *Source* **Deploy from a branch**, branch **main**, map **/ (root)**, en klik **Save**.
 4. Na een minuut staat de pagina op `https://<gebruikersnaam>.github.io/leerlijnen-ict/`.
 
@@ -32,6 +32,17 @@ De links staan in het aparte bestand `sharepoint-links.js`, zodat je `index.html
 4. Klik **Commit changes**. Na een minuut verschijnt bij dat leerdoel de knop **Lesmateriaal in SharePoint ↗**, in de leerlijn én bij Per leerjaar.
 
 Per leerjaar is er ook een regel `"map:5de-leerjaar"` voor de map van het hele leerjaar: die knop staat bovenaan bij Per leerjaar. Een lege regel geeft geen knop. Collega's hebben in SharePoint zelf toegang tot de map nodig; de links zijn zichtbaar op de openbare pagina, maar de mappen openen alleen voor wie toegang heeft.
+
+## Lessuggesties aanvullen
+
+Bij elk leerdoel toont de site eerst de **voorbeelden uit het leerplan Op.stap** (vast, in `index.html`). Daaronder staat de **aanvulling van onze scholen**, die uit het aparte bestand `suggesties.js` komt.
+
+1. Open op GitHub `suggesties.js` en klik op het potloodje.
+2. Zoek het leerdoel (per leerjaar gegroepeerd, met spoor en leerplancodes erboven) en pas de tekst tussen de aanhalingstekens aan.
+3. Gebruik in de tekst geen rechte aanhalingstekens ("); ’ en ‘ mogen wel. Laat de komma op het einde staan.
+4. Klik **Commit changes**. Na een minuut staat de nieuwe suggestie in de leerlijn én bij Per leerjaar.
+
+Een lege tekst (`""`) toont geen aanvulling bij dat leerdoel; de voorbeelden uit het leerplan blijven staan. Ontbreekt het bestand of bevat het een fout, dan toont de pagina alleen de voorbeelden uit het leerplan en verschijnt onderaan een melding.
 
 ## 4. Aanpassen
 
